@@ -11,10 +11,11 @@ Class Usuario extends Modelo{
     public $nombre_tabla = 'usuario';
     public $pk = 'id_usuario';
     
-    public $atributos = array(        
+    public $atributos = array( 
+        'id_usuario' => array(),
         'nombre' => array(),
         'apaterno' => array(),
-        'amaetrno' => array(),
+        'amaterno' => array(),
         'email' => array(),
         'telefono' => array(),
         'password' => array(),
@@ -34,6 +35,7 @@ Class Usuario extends Modelo{
     private $foto_perfil;
     private $id_tipo;
     private $password_confirma;
+    private $id_usuario;
     
     function Usuario(){
         parent::Modelo();
@@ -47,13 +49,7 @@ Class Usuario extends Modelo{
         return $rs;
     }
     
-    public function get_nombres() {
-        return $this->nombre;
-    }
-
-    public function set_nombres($valor) {
-        $this->nombre= trim($valor);
-    }
+    
     
     public function get_telefono() {
         return $this->telefono;
@@ -85,7 +81,7 @@ Class Usuario extends Modelo{
 
     public function set_email($valor){
         
-        $rs = $this->consulta_sql("select * from usuario where correo = '$valor'");
+        $rs = $this->consulta_sql("select * from usuario where email = '$valor'");
         $rows = $rs->GetArray();
         
         if(count($rows) > 0){
@@ -137,6 +133,14 @@ Class Usuario extends Modelo{
     
     public function set_password_confirma($valor){
         $this->password_confirma = md5($valor);
+    }
+    
+     public function get_id_usuario(){
+        return $this->id_usuario;
+    }
+    
+    public function set_id_usuario($valor){
+        $this->id_usuario= trim($valor);
     }
 }
 ?>

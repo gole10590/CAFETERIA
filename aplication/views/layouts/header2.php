@@ -34,13 +34,9 @@
                             <ul class="nav navbar-nav pull-right">                                
                                 <li><a>Administrador: </a></li>
                                 <li>
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><strong><?php echo $_SESSION['correo']?></strong><b class="caret"></b></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><strong><?php echo $_SESSION['email']?></strong><b class="caret"></b></a>
                                     <ul class="dropdown-menu" role="menu">                                        
-                                        <li><a href="<?php echo BASEURL."views/site/MisVentas.php"; ?>">Mis Ventas</a></li>
-                                        <li><a href="<?php echo BASEURL."views/site/MisRentas.php"; ?>">Mis Rentas</a></li>
-                                        <!--<li><a href="<?php // echo "#"; ?>">Publicaciones</a></li>-->
-                                        <li class="divider"></li>
-                                        <li><a href="<?php echo BASEURL."views/site/Configuracion.php"; ?>">Configuracion</a></li>
+                                        
                                         <li><a href="<?php echo "../site/CerrarSession.php?id=Bye"; ?>">Salir</a></li>
                                     </ul>
                                 </li>

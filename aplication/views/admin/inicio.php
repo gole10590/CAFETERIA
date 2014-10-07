@@ -22,11 +22,9 @@ include '../layouts/header.php';
     <!-- Menu de Opciones -->
 <div class="list-group">
      <a href="<?php echo BASEURL."views/admin/inicio.php" ?>" class="list-group-item">MENU</a>
-    <a href="<?php echo BASEURL."views/admin/Publicaciones.php" ?>" class="list-group-item">Publicaciones</a>
-    <a href="<?php echo BASEURL."views/admin/Comentarios.php" ?>" class="list-group-item">Comentarios</a>
-    <a href="<?php echo BASEURL."views/admin/Avisos.php" ?>" class="list-group-item">Avisos</a>
-    <a href="<?php echo BASEURL."views/admin/Cuentas.php" ?>" class="list-group-item">Cuentas</a>    
-    <a href="<?php echo BASEURL."views/admin/Productos.php" ?>" class="list-group-item">Productos</a>    
+    <a href="<?php echo BASEURL."views/admin/Registro.php" ?>" class="list-group-item">Crear usuarios</a>
+    <a href="<?php echo BASEURL."views/admin/.php" ?>" class="list-group-item">Productos</a>
+    <a href="<?php echo BASEURL."views/admin/.php" ?>" class="list-group-item">Estadisticas Venta</a>     
     
 </div>
 <!-- Termina Menu de Opciones -->
