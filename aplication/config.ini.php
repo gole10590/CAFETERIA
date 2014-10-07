@@ -1,0 +1,1 @@
+<?php define('BASEURL', 'http://localhost/CAFETERIA/aplication/'); ?>

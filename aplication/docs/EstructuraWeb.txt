@@ -1,0 +1,35 @@
+
+        /********************************************************
+                Estructura y Composicion de SisinfoNet Web
+
+        *********************************************************/
+
+index.php                                 // Redirecciona al Inicio o Pagina Principal de la Pag Web
+
+    +aplication/                          // Carpeta Principal de Aplicaciones
+    +config.ini.php                       // Base de URL para cualquier link en cualquier doc php 
+
+        +controllers/                     // Controladores para los tipos de Usuarios manejados por Web Master
+            +adminController/                  // Controladores Consultas etc para Admin
+            +siteController/                   // Controladores Consultas etc para User
+
+        +docs/                            // Documentos de referencia para Otros posibles Admins
+            +Estructura.txt                    // Descripcion de Estructura de Pagina Web
+            +SisinfoNet.sql                    // Script y Definicion de Base de Datos
+
+        +libs/                            // Librerias de Distintas Aplicaciones
+            +adodb5/                           // Conexion MySql, Postgres, etc...
+            +bootstrap/                        // Css, JavaScript, JQuerys
+            +zebra_form/                       // Seguridad y Validacion de Formularios
+
+        +models/                          // Modelado de Tablas de Base de Datos 
+            +allModels.php                     // Seters y Getters Para Formularios
+
+        +views/                           // Vistas al User o Admin
+            +admin/                            // Vistas Definidas para el Administrador Web
+            +img/                              // Imagenes Publicas para la Web en General
+            +layouts/                          // Header.php y Footer.php Encabezado y pie de Paginas
+            +site/                             // Todas las vistas publicas para el Usuario
+
+---------------------------------------------------------------------------------------------------------
+    

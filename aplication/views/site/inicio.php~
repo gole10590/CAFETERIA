@@ -1,0 +1,26 @@
+<?php session_start();
+/*
+ * Inicio de Sessiones ( Administrador - Usuario )
+ * @autor MaNe Rs
+ * 
+ */
+
+include '../layouts/header.php';
+?>
+
+<!-- Decicion de Inicios de Sección Admin - User -->
+<?php if (isset($_SESSION['id_usuario'])): ?>        
+
+    <?php    
+    if (isset($_SESSION['admin'])) {
+        // Si inicia session un Admin redirecciona al menu de Administrador
+    } else {
+        // Si inicia session un Usuario redirecciona al menu de Usuario        
+    }
+    ?>
+
+<?php endif; ?>
+
+<center> <h3>Bienvenido a SisinfoNet. </h3> </center>
+Daniel Espitia
+<?php include '../layouts/footer.php'; ?>

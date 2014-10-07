@@ -1,0 +1,65 @@
+#page{
+    margin-top: 0px;
+    margin-bottom: 0px;
+    background: white;
+    border: 1px solid #C9E0ED;
+    margin-top: 50px;
+    margin-bottom: 15px;
+    background: white;
+    background-color: white;
+    border-width: 2px;
+    border-color: #999;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    -moz-box-shadow: 0px 0px 6px #000000;
+    -webkit-box-shadow: 0px 0px 6px black;
+    box-shadow: 0px 0px 6px black;
+}
+
+body {
+    padding-top: 0px;
+    padding-bottom: 40px;
+    background-image: url("http://localhost/CAFETERIA/aplication/views/img/fondo.jpg");
+}
+
+.logoNavBar {
+    width:20px; 
+    height:23px;
+}
+
+.fotoUsuario{
+    width:109px; 
+    height:108px;
+}
+
+.imgCarrousel {
+    width:590px; 
+    height:280px;
+}
+
+.logoSisinfo {
+    width:120x; 
+    height:80px;
+}
+
+.imgBeca{
+    width:210px; 
+    height:130px;
+}
+
+.imgDetalles{
+    width:250px; 
+    height:170px;
+}
+
+.fotoCommentario{
+    width:25px; 
+    height:25px;
+}
+
+.Transparencia{
+    filter:alpha(opacity=50); 
+    opacity:0.7;
+}
+
