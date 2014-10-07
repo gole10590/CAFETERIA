@@ -35,7 +35,7 @@
                     <!-- NavBar -->
                     <div class="navbar navbar-fixed-top navbar-inverse">
                         <div class="container">
-                            <a class="navbar-brand" href="Bienvenido.php">CAFETERIA</a>                            
+                            <a class="navbar-brand" href="inicio.php">CAFETERIA</a>                            
                             <ul class="nav navbar-nav pull-right">                                
                                 <li><a>Administrador: </a></li>
                                 <li>
@@ -70,7 +70,7 @@
                     <!-- NavBar -->
                     <div class="navbar navbar-fixed-top navbar-inverse">
                         <div class="container">
-                            <a class="navbar-brand" href="Bienvenido.php">
+                            <a class="navbar-brand" href="inicio.php">
                                 CAFETERIA</a>
                             <ul class="nav navbar-nav pull-right">
                                  <li><a>Cliente: </a></li>
@@ -109,7 +109,7 @@
                     <!-- NavBar -->
                     <div class="navbar navbar-fixed-top navbar-inverse">
                         <div class="container">
-                            <a class="navbar-brand" href="Bienvenido.php">
+                            <a class="navbar-brand" href="inicio.php">
                                 CAFETERIA</a>
                             <ul class="nav navbar-nav pull-right">
                                  <li><a>Empleado: </a></li>
