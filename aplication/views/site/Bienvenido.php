@@ -12,12 +12,23 @@ include ('../layouts/header.php');
 <!-- Decicion de Inicios de Sección Admin - User -->
 
     <?php
-    if (isset($_SESSION['admin'])) {
+    if ($_SESSION['admin']=="isAdmin") 
+    {
         // Si inicia session un Administrador redirecciona al menu de Admin                
         header("Location:".BASEURL."views/admin/inicio.php");
-    } else {
-        // Si inicia session un Usuario redirecciona al menu de Usuario                
-        header("Location:".BASEURL."views/site/inicio.php");
+    } else 
+        
+    {
+        if ($_SESSION['admin']=="isClient")
+        {
+        // Si inicia session un Cliente redirecciona al menu de Cliente                
+        header("Location:".BASEURL."views/Client/inicio.php");
+        }
+        else
+        {
+            // Si inicia session un Usuario redirecciona al menu de Usuario                
+        header("Location:".BASEURL."views/Empleado/inicio.php"); 
+        }
     } 
     ?>
 

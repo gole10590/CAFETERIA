@@ -2,7 +2,7 @@
 
 /**
  * Modelo Usuario.php
- * 
+ * @author AuthorName <author.name@example.com>
  *   
  */
 
@@ -13,27 +13,26 @@ Class Usuario extends Modelo{
     
     public $atributos = array(        
         'nombre' => array(),
-        'apellido' => array(),
-        'no_ctrl' => array(),
-        'correo' => array(),
-        'usuario' => array(),
+        'apaterno' => array(),
+        'amaetrno' => array(),
+        'email' => array(),
+        'telefono' => array(),
         'password' => array(),
         'foto_perfil' => array(),
         'id_tipo' => array(),
-        'id_carrera' => array(),
+        
     );
     
     public $errores = array( );
     
     private $nombre;
-    private $apellido;
-    private $no_ctrl;
-    private $correo;
-    private $usuario;
+    private $apaterno;
+    private $amaterno;
+    private $email;
+    private $telefono;
     private $password;
     private $foto_perfil;
     private $id_tipo;
-    private $id_carrera;
     private $password_confirma;
     
     function Usuario(){
@@ -48,6 +47,57 @@ Class Usuario extends Modelo{
         return $rs;
     }
     
+    public function get_nombres() {
+        return $this->nombre;
+    }
+
+    public function set_nombres($valor) {
+        $this->nombre= trim($valor);
+    }
+    
+    public function get_telefono() {
+        return $this->telefono;
+    }
+
+    public function set_telefono($valor) {
+        $this->telefono= trim($valor);
+    }
+    
+    public function get_apaterno() {
+        return $this->apaterno;
+    }
+
+    public function set_apaterno($valor) {
+        $this->apaterno= trim($valor);
+    }
+    
+    public function get_amaterno() {
+        return $this->amaterno;
+    }
+
+    public function set_amaterno($valor) {
+        $this->amaterno= ($valor);
+    }
+    
+    public function get_email() {
+        return $this->email;
+    }
+
+    public function set_email($valor){
+        
+        $rs = $this->consulta_sql("select * from usuario where correo = '$valor'");
+        $rows = $rs->GetArray();
+        
+        if(count($rows) > 0){
+            $this->email = "";
+            $this->errores[] = "Este e-mail (".$valor.") ya esta registrado"; 
+        }else{
+            $this->email = trim($valor);
+        }
+        
+        //die("Ya existe: ".count($rows));        
+    } 
+    
     public function get_nombre() {
         return $this->nombre;
     }
@@ -56,55 +106,12 @@ Class Usuario extends Modelo{
         $this->nombre= trim($valor);
     }
     
-    public function get_apellido() {
-        return $this->apellido;
-    }
-
-    public function set_apellido($valor) {
-        $this->apellido= trim($valor);
-    }
-    
-    public function get_no_ctrl() {
-        return $this->no_ctrl;
-    }
-
-    public function set_no_ctrl($valor) {
-        $this->no_ctrl= ($valor);
-    }
-    
-    public function get_correo() {
-        return $this->correo;
-    }
-
-    public function set_correo($valor){
-        
-        $rs = $this->consulta_sql("select * from usuario where correo = '$valor'");
-        $rows = $rs->GetArray();
-        
-        if(count($rows) > 0){
-            $this->correo = "";
-            $this->errores[] = "Este e-mail (".$valor.") ya esta registrado"; 
-        }else{
-            $this->correo = trim($valor);
-        }
-        
-        //die("Ya existe: ".count($rows));        
-    } 
-    
-    public function get_usuario() {
-        return $this->usuario;
-    }
-
-    public function set_usuario($valor) {
-        $this->usuario= trim($valor);
-    }
-    
     public function get_password() {
         return $this->password;
     }
 
     public function set_password($valor) {
-        $this->password= md5($valor);
+        $this->password= trim($valor);
     }
     
     public function get_foto_perfil() {
@@ -123,13 +130,6 @@ Class Usuario extends Modelo{
         $this->id_tipo= trim($valor);
     }
     
-    public function get_id_carrera() {
-        return $this->id_carrera;
-    }
-
-    public function set_id_carrera($valor) {
-        $this->id_carrera= trim($valor);
-    }
     
     public function get_password_confirma(){
         return $this->password_confirma;

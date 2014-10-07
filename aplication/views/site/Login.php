@@ -62,9 +62,11 @@
     // if the form is valid
     
     if ($form->validate()) {
-        if(isset($_POST['correo'])){
+        if(isset($_POST['correo']))
+        {
             $login = new LoginController();
-            if(!$login->valida_usuario($_POST['correo'], $_POST['password'])){
+            if(!$login->valida_usuario($_POST['correo'], $_POST['password']))
+            {
                 $form->render();
             }else{
                 header("location: Bienvenido.php");

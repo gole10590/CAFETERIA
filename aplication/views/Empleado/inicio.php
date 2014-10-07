@@ -14,7 +14,7 @@ include '../layouts/header.php';
             <div class="page-header">
                 <center>
                     <a href="CambiarImagen.php"><img data-toggle="tooltip" title="Cambiar Imagen" class="fotoUsuario" src="../img/users/<?php echo $_SESSION['foto_perfil']?>" alt="user" class="img-thumbnail" ></a>
-                    <br/><strong><?php echo $_SESSION['usuario'] ?></strong><br/><?php echo $_SESSION['no_ctrl'] ?>
+                    <br/><strong><?php echo $_SESSION['nombre'] ?></strong><br/><?php echo $_SESSION['id_usuario'] ?>
                 </center>
             </div>
         <?php endif; if (!isset($_SESSION['id_usuario'])) : ?>
@@ -39,11 +39,11 @@ include '../layouts/header.php';
 <!-- Mensaje Bienvenida -->
 <div class="col-lg-9">
     <div class="page-header panel panel-default">
-        <div class="panel-heading"><center><h2>Bienvenido <?php echo $_SESSION['usuario']?></h2></center></div>
+        <div class="panel-heading"><center><h2>Bienvenido <?php echo $_SESSION['nombre']?></h2></center></div>
         <div class="panel-body">
         <p class="lead">
             <center>
-                AQUI VA INFROMACION PARA LOS USUARIOS<br/><br/>                
+                AQUI VA INFROMACION PARA LOS Empleados<br/><br/>                
             </center>
         </p>
         </div>

@@ -11,7 +11,7 @@ include '../layouts/header.php';
     <div class="page-header">
         <center>
             <img class="fotoUsuario" src="../img/users/<?php echo $_SESSION['foto_perfil']?>" alt="user" class="img-thumbnail" >
-            <br/><strong><?php echo $_SESSION['usuario'] ?></strong><br/><?php echo $_SESSION['no_ctrl'] ?>
+            <br/><strong><?php echo $_SESSION['nombre'] ?></strong><br/><?php echo $_SESSION['id_usuario'] ?>
         
         </center>
     </div>
@@ -39,7 +39,7 @@ include '../layouts/header.php';
 <div class="col-lg-9">
     <div class="page-header">
                 
-       <legend><center><h2>Bienvenido <?php echo $_SESSION['usuario']?></h2></center></legend>
+       <legend><center><h2>Bienvenido <?php echo $_SESSION['nombre']?></h2></center></legend>
         
         <p class="lead">
             <center>
