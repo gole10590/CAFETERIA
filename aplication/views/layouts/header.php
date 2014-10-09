@@ -17,6 +17,7 @@
         <script src="<?php echo BASEURL; ?>libs/bootstrap/js/bootstrap.min.js"></script>
         <link href="<?php echo BASEURL; ?>libs/bootstrap/css/aplication.css" rel="stylesheet" media="screen">    
         <!-- Termina Bootstrap -->
+     
         
                 
     </head>

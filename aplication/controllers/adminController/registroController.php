@@ -14,9 +14,10 @@ class RegistroController extends Usuario{
     
     public function registraUsuario($valores){        
         
-        if ($valores['password'] != $valores['password_confirma']) {
+        if ($valores['password'] != $valores['password_confirma'])
+            {
             header("Location: ErrorSession.php");
-        } else {            
+            } else {            
                 
         // Falta Validar COntraseñas 
             parent::Usuario();
@@ -26,7 +27,7 @@ class RegistroController extends Usuario{
             $this->set_id_usuario($valores['id_usuario']);
             $this->set_email($valores['email']);
             $this->set_password($valores['password']);
-            $this->set_foto_perfil($valores['foto_perfil']);
+            $this->set_foto_perfil('user.jpg');
             $this->set_telefono($valores['telefono']);
             $this->set_id_tipo($valores['id_tipo']);
            

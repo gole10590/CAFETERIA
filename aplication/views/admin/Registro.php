@@ -40,8 +40,7 @@
         'email' => '',        
         'password' => '',
         'password_confirma' => '',
-        'foto_perfil' => 'user.jpg',
-        'id_tipo' => '2',
+        'foto_perfil' => 'user.jpg',       
         'captcha' => ''
     );
     
@@ -122,10 +121,6 @@
         $form->add('note', 'note_password_confirma', 'password_confirma', 'Contraseña debe ser entre 6 y 20 caracteres.');
         
         
-        $obj = $form->add('hidden', 'foto_perfil');
-        $obj->set_rule(array(
-            'required'  =>  array('error', 'foto_perfil es requerido!'),
-        ));
         
        
         
@@ -133,10 +128,12 @@
         $form->add('submit', 'btnsubmit', 'Registrar');      
     
         //validamos el formulario -------------------------------
-        if ($form->validate()){
+        if ($form->validate())
+            {
                 $usuario = new RegistroController();
                 if(isset($_POST)){
-                    if($usuario->registraUsuario($_POST)){
+                    if($usuario->registraUsuario($_POST))
+                    {
                         header("Location: inicio.php");
                         exit();
                     }else{
