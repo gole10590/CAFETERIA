@@ -19,21 +19,15 @@ Class siteController{
         return $arreglo;
     }
     
-    function consulta_inmuebles( $where = ';'){
+    function consulta_productos(){
         $sisinfo = new Modelo();
-        $sql = ("SELECT * FROM inmueble ".$where);
+        $sql = ("SELECT * FROM producto; ");
         $rs = $sisinfo->consulta_sql($sql);
         $arreglo = $rs->GetArray();
         return $arreglo;        
     }
     
-    function consulta_clasificacion( $id_clasificacion ){
-        $sisinfo = new Modelo();
-        $sql = ("SELECT * FROM otra_publicacion where id_clasificacion = ".$id_clasificacion );
-        $rs = $sisinfo->consulta_sql($sql);
-        $arreglo = $rs->GetArray();
-        return $arreglo;                    
-    }
+    
     
     function consulta_usuarios($where = ";"){
         $sisinfo = new Modelo();
@@ -51,21 +45,9 @@ Class siteController{
         return $arreglo;
     }
     
-    function consulta_publicacion( $where = ";" ){
-        $sisinfo = new Modelo();
-        $sql = ("SELECT * FROM publicacion ".$where );
-        $rs = $sisinfo->consulta_sql($sql);
-        $arreglo = $rs->GetArray();
-        return $arreglo;
-    }
+  
     
-    function consulta_comentarios ( $where = ";" ){
-        $sisinfo = new Modelo();
-        $sql = ("SELECT * FROM comentario ".$where );
-        $rs = $sisinfo->consulta_sql($sql);
-        $arreglo = $rs->GetArray();
-        return $arreglo;
-    }
+ 
     
     function consulta_MisVentas( $id_usuario ){
         $sisinfo = new Modelo();
@@ -85,7 +67,7 @@ Class siteController{
             
     function actualiza_producto($status, $id_producto) {
         $sisinfo = new Modelo();
-        $sql = ("UPDATE  `producto` SET  `status` =  '"
+        $sql = ("UPDATE  `producto` SET  `id_status` =  '"
                 .$status."' WHERE  `producto`.`id_producto` =".$id_producto.";");
         $sisinfo->consulta_sql($sql);        
     }

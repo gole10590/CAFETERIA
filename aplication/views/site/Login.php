@@ -34,7 +34,7 @@
     // the label for the "email" element
     $form->add('label', 'label_correo', 'correo', 'Correo Electronico');
     // add the "email" element
-    $obj = $form->add('text', 'correo', '', array('autocomplete' => 'off'));
+    $obj = $form->add('text', 'correo', '', array('autocomplete' => 'on'));
     // set rules
     $obj->set_rule(array(
         // error messages will be sent to a variable called "error", usable in custom templates

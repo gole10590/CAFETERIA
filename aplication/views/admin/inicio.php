@@ -23,7 +23,7 @@ include '../layouts/header.php';
 <div class="list-group">
      <a href="<?php echo BASEURL."views/admin/inicio.php" ?>" class="list-group-item">MENU</a>
     <a href="<?php echo BASEURL."views/admin/Registro.php" ?>" class="list-group-item">Crear usuarios</a>
-    <a href="<?php echo BASEURL."views/admin/.php" ?>" class="list-group-item">Productos</a>
+    <a href="<?php echo BASEURL."views/admin/Productos.php" ?>" class="list-group-item">Productos</a>
     <a href="<?php echo BASEURL."views/admin/.php" ?>" class="list-group-item">Estadisticas Venta</a>     
     
 </div>

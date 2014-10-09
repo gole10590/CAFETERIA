@@ -1,1 +1,1 @@
-<?php define('BASEURL', 'http://localhost/CAFETERIA/aplication/'); ?>
+<?php define('BASEURL', 'http://172.20.60.35/CAFETERIA/aplication/'); ?>
