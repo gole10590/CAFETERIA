@@ -37,7 +37,7 @@ include ('../layouts/header.php');
 <div class="col-lg-3 list-group-flush">
 <div class="page-header">
         <center>
-            <img class="logoSisinfo" src="../img/404.png" alt="user" class="img-thumbnail" >        
+            <img class="logoSisinfo" src="../img/logo_1.gif" alt="user" class="img-thumbnail" >        
         </center>
     </div>
 
@@ -58,12 +58,12 @@ include ('../layouts/header.php');
 <!-- Mensaje Bienvenida -->
 <div class="col-lg-9">
     <div class="page-header panel panel-info">
-        <div class="panel-heading"><center><h2>Bienvenido al sitio de compras de la CAFETERIA</h2></center></div>
+        <div class="panel-heading"><center><h2>Bienvenido al sitio web de la Cafetería III del ITC.</h2></center></div>
         
         <div class="panel-body">
         <p class="lead">
             <center>
-                ESTE SITIO LE AYUDARA A AGILIZAR SUS COMPRAS EN LA CAFETERIA DE CAMPUS 2 DEL ITC<br/><br/>                
+                 Este sitio le ayudara a realizar sus compras de comida en línea.<br/><br/>                
             </center>
         </p>
         </div>
@@ -78,14 +78,20 @@ include ('../layouts/header.php');
             </ol>
             <div class="carousel-inner">
                 <div class="item active">
-                    <center><img class="imgCarrousel" src="../img/sisinfo.jpg" alt="First slide"></center>
+                    <center><img class="imgCarrousel" src="../img/comida/ASALU.jpg" alt="First slide"></center>
                 </div>                
                 <div class="item ">
-                    <center><img class="imgCarrousel" src="../img/404.png" alt="Second slide"></center>
+                    <center><img class="imgCarrousel" src="../img/comida/Sonhar.jpg" alt="Second slide"></center>
                 </div>                
                 <div class="item ">
-                    <center><img class="imgCarrousel" src="../img/logo.gif" alt="Second slide"></center>
-                </div>                
+                    <center><img class="imgCarrousel" src="../img/comida/ensalada.jpg" alt="Second slide"></center>
+                </div> 
+                <div class="item ">
+                    <center><img class="imgCarrousel" src="../img/comida/pizza.jpg" alt="Second slide"></center>
+                </div>
+                <div class="item ">
+                    <center><img class="imgCarrousel" src="../img/comida/sand.jpg" alt="Second slide"></center>
+                </div> 
             </div>
             <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
                 <span class="icon-prev"></span>
