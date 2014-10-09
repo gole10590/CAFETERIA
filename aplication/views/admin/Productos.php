@@ -73,7 +73,7 @@ session_start();
                                     <tr>
                                         <td><?php echo $rentas[$key]['nombre']?></td>
                                         <td><?php echo "$".$rentas[$key]['precio'].".00"?></td>
-                                        <td> <img class="fotoUsuario" src="../img/comida/<?php echo  $rentas[$key]['imagen']?>" alt="user" class="img-thumbnail" ></td>
+                                        <td><a href="CambiarImagen.php"><img data-toggle="tooltip" title="Cambiar la imagen" class="fotoUsuario" src="../img/comida/<?php echo  $rentas[$key]['imagen']?>" alt="user" class="img-thumbnail" ></a> </td>
                                         
                                         <td><?php $status = $rentas[$key]["id_status"]; ?>
                         <?php if ( $status == 1 ) : $stt = 2; ?>

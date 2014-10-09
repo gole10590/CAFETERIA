@@ -48,22 +48,6 @@ Class siteController{
   
     
  
-    
-    function consulta_MisVentas( $id_usuario ){
-        $sisinfo = new Modelo();
-        $sql = ("SELECT * FROM producto where id_usuario = ".$id_usuario );
-        $rs = $sisinfo->consulta_sql($sql);
-        $arreglo = $rs->GetArray();
-        return $arreglo;
-    }
-    
-    function consulta_MisRentas( $id_usuario){
-        $sisinfo = new Modelo();
-        $sql = ("SELECT * FROM inmueble where id_usuario = ".$id_usuario );
-        $rs = $sisinfo->consulta_sql($sql);
-        $arreglo = $rs->GetArray();
-        return $arreglo;
-    }
             
     function actualiza_producto($status, $id_producto) {
         $sisinfo = new Modelo();
@@ -72,12 +56,7 @@ Class siteController{
         $sisinfo->consulta_sql($sql);        
     }
     
-    function actualiza_rentas( $status, $id_inmueble){
-        $sisinfo = new Modelo();
-        $sql = ("UPDATE  `inmueble` SET  `status` =  '"
-                .$status."' WHERE  `inmueble`.`id_inmueble` = ".$id_inmueble.";");
-        $sisinfo->consulta_sql($sql);
-    }
+
     
     function actualiza_usuario($valores) {
               
@@ -99,15 +78,7 @@ Class siteController{
         }
     }
     
-    function actualiza_usuario2($valores, $usuario) {        
-                
-        $sisinfo = new Modelo();
-        $sql = ("
-            UPDATE `usuario` 
-            SET  `foto_perfil` =  '".$valores["foto_perfil"]."' 
-            WHERE  `usuario`.`id_usuario` =".$usuario);   
-        $sisinfo->consulta_sql($sql);
-    }    
+        
 }
 
 ?>

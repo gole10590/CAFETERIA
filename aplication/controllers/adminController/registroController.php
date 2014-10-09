@@ -2,7 +2,7 @@
 
 /**
  * Modelo RegistroController.php
- * @author AuthorName <author.name@examp.com>
+ * 
  *   
  */
 
