@@ -86,7 +86,8 @@ Class Usuario extends Modelo{
         return $this->email;
     }
 
-    public function set_email($valor){
+    public function set_email($valor)
+    {
         
         $rs = $this->consulta_sql("select * from usuario where email = '$valor'");
         $rows = $rs->GetArray();
@@ -98,7 +99,7 @@ Class Usuario extends Modelo{
             $this->email = trim($valor);
         }
         
-        //die("Ya existe: ".count($rows));        
+                
     } 
     
     public function get_nombre() {
@@ -147,7 +148,17 @@ Class Usuario extends Modelo{
     }
     
     public function set_id_usuario($valor){
-        $this->id_usuario= trim($valor);
+      
+        
+        $rs = $this->consulta_sql("select * from usuario where id_usuario = '$valor'");
+        $rows = $rs->GetArray();
+        
+        if(count($rows) > 0){
+            $this->id_usuario = "";
+            $this->errores[] = "Este numero de control (".$valor.") ya esta registrado"; 
+        }else{
+            $this->id_usuario = trim($valor);
+        }
     }
 }
 ?>

@@ -2,7 +2,7 @@
 
 /**
  * Modelo RegistroController.php
- * @author AuthorName <author.name@example.com>
+ * @author AuthorName <author.name@examp.com>
  *   
  */
 
@@ -16,7 +16,7 @@ class RegistroController extends Usuario{
         
         if ($valores['password'] != $valores['password_confirma'])
             {
-            header("Location: ErrorSession.php");
+            header("Location: ErrorPassword.php");
             } else {            
                 
         // Falta Validar COntraseñas 
@@ -32,29 +32,47 @@ class RegistroController extends Usuario{
             $this->set_id_tipo($valores['id_tipo']);
            
             
-            if(count($this->errores) > 0 ){
+            if(count($this->errores) > 0 )
+            {
                 return false;
             }
+             else
+             {
+                //return $this->inserta($this->get_atributos());
+                if ($this->inserta($this->get_atributos())) {
+                    if ($this->enviaMail($valores['email'], "CORREO REGISTRADO", "SU CUENTA HA SIDO CREADA CON EXITO")) {
                         
-            return $this->inserta($this->get_atributos());
-        } // else 
+                        return true;
+                    }
+                    return false;
+                    echo "Error al enviar correo  ";
+                } else {
+                    return false;
+                }
+             }
+        }  
     }
     
     private function enviaMail($correo,$asunto,$mensaje){
                
-                include("../libs/class.phpmailer.php");
-                include("class.smtp.php");
-             
+                
+                require("../../libs/PHPMailer_v2.0.4/class.phpmailer.php"); 
+                require '../../libs/PHPMailer_v2.0.4/class.smtp.php';
+
+                include "../../libs/adodb5/adodb.inc.php";
+                
                     $mail = new PHPMailer();
                     $mail->IsSMTP();
                     $mail->SMTPAuth = true;
                     $mail->SMTPSecure = "ssl";
                     $mail->Host = "smtp.gmail.com";
                     $mail->Port = 465;
-                    $mail->Username = "";
-                    $mail->Password = "";
+                    
+                    //Nos autenticamos con nuestras credenciales en el servidor de correo Gmail
+                    $mail->Username = "tcdgole@gmail.com";
+                    $mail->Password = "123Tamarindo";
 
-                    $mail->From = "";
+                    $mail->From = "Cafeteria campus 2";
                     $mail->FromName = "Instituto Tecnologico de Celaya";
                     $mail->Subject = "Contacto Web: ".$asunto;
                     $mail->MsgHTML("
@@ -85,7 +103,7 @@ class RegistroController extends Usuario{
                     $mail->AddAttachment("-");
                     $mail->AddAttachment("-");
 
-                    $mail->AddAddress($correo,$correo);
+                    $mail->AddAddress($correo);
                     $mail->IsHTML(true);
 
                     if(!$mail->Send()) {
