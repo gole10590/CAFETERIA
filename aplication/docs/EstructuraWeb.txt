@@ -1,6 +1,6 @@
 
         /********************************************************
-                Estructura y Composicion de SisinfoNet Web
+                Estructura
 
         *********************************************************/
 
@@ -15,7 +15,7 @@ index.php                                 // Redirecciona al Inicio o Pagina Pri
 
         +docs/                            // Documentos de referencia para Otros posibles Admins
             +Estructura.txt                    // Descripcion de Estructura de Pagina Web
-            +SisinfoNet.sql                    // Script y Definicion de Base de Datos
+            
 
         +libs/                            // Librerias de Distintas Aplicaciones
             +adodb5/                           // Conexion MySql, Postgres, etc...
