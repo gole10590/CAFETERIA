@@ -82,7 +82,35 @@ Class siteController{
         }
     }
     
+    
+    function actualiza_datos_producto($valores) {
+              
+       
+        $sisinfo = new Modelo();
+        $sql = ("            
+            UPDATE  `producto` SET  
+            `nombre` =  '".$valores['nombre']."',
+            `precio` =  '".$valores['precio']."',
+            `descripcion` =  '".$valores['descripcion']."',
+            `imagen` =  '".$valores['imagen']."'
+            
+           WHERE `id_producto` =".$valores['id_producto'].";");   
+        $sisinfo->consulta_sql($sql);
         
+    }
+    
+    
+    
+    
+      function actualiza_foto_usuario($valores, $usuario) {        
+                
+        $sisinfo = new Modelo();
+        $sql = ("
+            UPDATE `usuario` 
+            SET  `foto_perfil` =  '".$valores["foto_perfil"]."' 
+            WHERE  `usuario`.`id_usuario` =".$usuario);   
+        $sisinfo->consulta_sql($sql);
+    }     
 }
 
 ?>

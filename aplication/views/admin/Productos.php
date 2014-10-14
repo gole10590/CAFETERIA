@@ -49,14 +49,13 @@ $rentas = $admin->consulta_productos();
                     <p>
                     <h5><center>
                             <?php
-                            
                             $file = fopen("./Archivos_config/producto.txt", "r");
                             while (!feof($file)) {
                                 echo fgets($file) . "<br />";
                             }
                             fclose($file);
                             ?>
-                            </center>
+                        </center>
                     </h5> 
                     <center>
                         <a data-toggle="tooltip" title="Agregar" href="RegistraProducto.php" type="button" class="btn btn-primary btn-mini">Agregar un Nuevo Producto</a>
@@ -87,16 +86,17 @@ $rentas = $admin->consulta_productos();
                             </td>
                             <td><?php echo $rentas[$key]['nombre'] ?></td>
                             <td><?php echo "$" . $rentas[$key]['precio'] . ".00" ?></td>
-                            <td><a href="CambiarImagen.php"><img data-toggle="tooltip" title="Cambiar la imagen" class="fotoUsuario" src="../img/comida/<?php echo $rentas[$key]['imagen'] ?>" alt="user" class="img-thumbnail" ></a> </td>
+                            <td><a href="Actualizar_Productos.php?id=<?php echo $id_pro ?>&pre=<?php echo $rentas[$key]['precio']?>&nom=<?php echo $rentas[$key]['nombre']?>&des=<?php echo $rentas[$key]['descripcion']?>"><img data-toggle="tooltip" title="Actualizar datos del producto..." class="fotoUsuario" src="../img/comida/<?php echo $rentas[$key]['imagen'] ?>" alt="user" class="img-thumbnail" ></a> </td>
 
                             <td><?php $status = $rentas[$key]["id_status"]; ?>
                                 <?php if ($status == 1) : $stt = 2; ?>
                                     <a data-toggle="tooltip" title="Producto en venta" href="<?php echo "Actualizaciones.php?stt=2&id=ActStatus&p=" . $id_pro ?>" type="button" class="btn btn-success btn-mini">EnVenta</a>
-                                <?php endif;
+                                <?php
+                                endif;
                                 if ($status == 2) : $stt = 1;
                                     ?>
                                     <a data-toggle="tooltip" title="El producto no esta en Venta" href="<?php echo "Actualizaciones.php?stt=1&id=ActStatus&p=" . $id_pro ?>" type="button" class="btn btn-danger btn-mini">Cancelado</a>
-    <?php endif; ?>
+                                <?php endif; ?>
                             </td>
 
                         </tr>
@@ -118,7 +118,7 @@ $rentas = $admin->consulta_productos();
                                         <img class="fotoUsuario" src="<?php echo BASEURL . "views/img/comida/" . $rentas[$key]["imagen"] ?>" />                                              
                                     </div>
                                     <div class="col-lg-9">
-    <?php echo $rentas[$key]["descripcion"] ?><br/><br/>
+                                        <?php echo $rentas[$key]["descripcion"] ?><br/><br/>
                                     </div>                                          
 
                                 </div>
@@ -132,7 +132,7 @@ $rentas = $admin->consulta_productos();
                     </div><!-- /.modal -->
 
 
-<?php endforeach; ?> 
+                <?php endforeach; ?> 
 
                 </tbody>
             </table>
