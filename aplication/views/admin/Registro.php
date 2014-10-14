@@ -39,6 +39,7 @@
         'amaterno' => '',
         'email' => '',        
         'password' => '',
+        'telefono'=>'',
         'password_confirma' => '',
         'foto_perfil' => 'user.jpg',       
         'captcha' => ''
