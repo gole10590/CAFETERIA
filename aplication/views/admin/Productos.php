@@ -34,7 +34,7 @@ session_start();
         <div class="list-group">    
             <a href="<?php echo BASEURL . "views/admin/inicio.php" ?>" class="list-group-item">Menu</a>
             <a href="<?php echo BASEURL . "views/admin/Registro.php" ?>" class="list-group-item">Crear Usuarios</a>
-            <a href="<?php echo BASEURL . "views/admin/.php" ?>" class="list-group-item active">Estadisticas Venta</a>
+            <a href="<?php echo BASEURL . "views/admin/Estadisticas.php" ?>" class="list-group-item active">Estadisticas Venta</a>
             
         </div>
         <!-- Termina Menu de Opciones -->

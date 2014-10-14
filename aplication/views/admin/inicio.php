@@ -24,7 +24,7 @@ include '../layouts/header.php';
      <a href="<?php echo BASEURL."views/admin/inicio.php" ?>" class="list-group-item">MENU</a>
     <a href="<?php echo BASEURL."views/admin/Registro.php" ?>" class="list-group-item">Crear usuarios</a>
     <a href="<?php echo BASEURL."views/admin/Productos.php" ?>" class="list-group-item">Productos</a>
-    <a href="<?php echo BASEURL."views/admin/.php" ?>" class="list-group-item">Estadisticas Venta</a>     
+    <a href="<?php echo BASEURL."views/admin/Estadisticas.php" ?>" class="list-group-item">Estadisticas Venta</a>     
     
 </div>
 <!-- Termina Menu de Opciones -->
