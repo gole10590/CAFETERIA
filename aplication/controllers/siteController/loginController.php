@@ -8,7 +8,6 @@
 
 class LoginController extends Usuario {
 
-    private $admins = array('elias_gomez10@hotmail.com', 'aqui van otros Admins');
 
     // Validar el inicio de session de un usuario
 
