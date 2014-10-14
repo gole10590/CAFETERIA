@@ -56,7 +56,11 @@ Class siteController{
         $sisinfo->consulta_sql($sql);        
     }
     
-
+    function elimina_producto( $id_producto) {
+        $sisinfo = new Modelo();
+        $sql = ("delete  from producto  WHERE  id_producto =".$id_producto.";");
+        $sisinfo->consulta_sql($sql);        
+    }
     
     function actualiza_usuario($valores) {
               
