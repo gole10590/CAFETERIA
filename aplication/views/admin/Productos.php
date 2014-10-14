@@ -47,10 +47,20 @@ $rentas = $admin->consulta_productos();
             <div class="panel-body">
                 <legend>
                     <p>
-                    <h5>
-                        En este apartado podra vizualizar los productos que se ofrecen en la cafeteria, tambien podra agregar nuevos productos y cambiar el estatus de los productos existentes.
-                    </h5>                
-                    <a data-toggle="tooltip" title="Agregar" href="RegistraProducto.php" type="button" class="btn btn-primary btn-mini">Agregar un Nuevo Producto</a>
+                    <h5><center>
+                            <?php
+                            
+                            $file = fopen("./Archivos_config/producto.txt", "r");
+                            while (!feof($file)) {
+                                echo fgets($file) . "<br />";
+                            }
+                            fclose($file);
+                            ?>
+                            </center>
+                    </h5> 
+                    <center>
+                        <a data-toggle="tooltip" title="Agregar" href="RegistraProducto.php" type="button" class="btn btn-primary btn-mini">Agregar un Nuevo Producto</a>
+                    </center>
                     </p>        
                 </legend>
             </div>
@@ -72,20 +82,21 @@ $rentas = $admin->consulta_productos();
                         <tr>
                             <td>
                                 <!--<a data-toggle="tooltip" title="Eliminar producto de BD" href="<?php echo "Actualizaciones.php?id=EliminaProd&p=" . $id_pro ?>" type="button" class="btn btn-danger btn-mini">Eliminar</a>-->
-                                <a type="button" class="btn btn-danger btn-mini" data-toggle="modal" data-target="#<?php echo $rentas[$key]["id_producto"]?>" >Eliminar</a>
-                            
+                                <a type="button" class="btn btn-danger btn-mini" data-toggle="modal" data-target="#<?php echo $rentas[$key]["id_producto"] ?>" >Eliminar</a>
+
                             </td>
                             <td><?php echo $rentas[$key]['nombre'] ?></td>
                             <td><?php echo "$" . $rentas[$key]['precio'] . ".00" ?></td>
                             <td><a href="CambiarImagen.php"><img data-toggle="tooltip" title="Cambiar la imagen" class="fotoUsuario" src="../img/comida/<?php echo $rentas[$key]['imagen'] ?>" alt="user" class="img-thumbnail" ></a> </td>
 
                             <td><?php $status = $rentas[$key]["id_status"]; ?>
-                                 <?php if ($status == 1) : $stt = 2; ?>
+                                <?php if ($status == 1) : $stt = 2; ?>
                                     <a data-toggle="tooltip" title="Producto en venta" href="<?php echo "Actualizaciones.php?stt=2&id=ActStatus&p=" . $id_pro ?>" type="button" class="btn btn-success btn-mini">EnVenta</a>
                                 <?php endif;
-                                if ($status == 2) : $stt = 1; ?>
+                                if ($status == 2) : $stt = 1;
+                                    ?>
                                     <a data-toggle="tooltip" title="El producto no esta en Venta" href="<?php echo "Actualizaciones.php?stt=1&id=ActStatus&p=" . $id_pro ?>" type="button" class="btn btn-danger btn-mini">Cancelado</a>
-                                <?php endif; ?>
+    <?php endif; ?>
                             </td>
 
                         </tr>
@@ -100,28 +111,28 @@ $rentas = $admin->consulta_productos();
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                    <h3 class="modal-title" id="myModalLabel"><?php echo "¿ESTA SEGURO QUE DECEA ELIMINAR : <strong>" . $rentas[$key]["nombre"] . "</strong> ?" ?></h3>
+                                    <h3 class="modal-title" id="myModalLabel"><?php echo "¿Está seguro que desea eliminar <strong>" . $rentas[$key]["nombre"] . "</strong> ?" ?></h3>
                                 </div>
                                 <div class="modal-body">                                          
                                     <div class="col-lg-3">
                                         <img class="fotoUsuario" src="<?php echo BASEURL . "views/img/comida/" . $rentas[$key]["imagen"] ?>" />                                              
                                     </div>
                                     <div class="col-lg-9">
-                                        <?php echo $rentas[$key]["descripcion"] ?><br/><br/>
+    <?php echo $rentas[$key]["descripcion"] ?><br/><br/>
                                     </div>                                          
-                                  
+
                                 </div>
                                 <div class="modal-footer">
                                     <button data-toggle="tooltip" title="Cancelar" type="button" class="btn btn-success btn-mini" data-dismiss="modal">Cancelar</button>
-                               <a data-toggle="tooltip" title="Eliminar producto de BD" href="<?php echo "Actualizaciones.php?id=EliminaProd&p=" . $id_pro ?>" type="button" class="btn btn-danger btn-mini">Eliminar</a>
-                              
+                                    <a data-toggle="tooltip" title="Eliminar producto de BD" href="<?php echo "Actualizaciones.php?id=EliminaProd&p=" . $id_pro ?>" type="button" class="btn btn-danger btn-mini">Eliminar</a>
+
                                 </div>
                             </div><!-- /.modal-content -->
                         </div><!-- /.modal-dialog -->
                     </div><!-- /.modal -->
 
 
-                <?php endforeach; ?> 
+<?php endforeach; ?> 
 
                 </tbody>
             </table>
