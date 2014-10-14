@@ -8,7 +8,7 @@
     include ('../../controllers/siteController/loginController.php');
        
     require '../../libs/zebra_form/Zebra_Form.php';
-    include("../layouts/header2.php"); 
+    include("../layouts/header.php"); 
     if (isset($_SESSION['id_usuario']) || isset($_SESSION['admin'])) {
      header("Location:".BASEURL."views/site/inicio.php");
     } else {

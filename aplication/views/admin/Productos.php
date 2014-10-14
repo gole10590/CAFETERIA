@@ -86,16 +86,16 @@ $rentas = $admin->consulta_productos();
                             </td>
                             <td><?php echo $rentas[$key]['nombre'] ?></td>
                             <td><?php echo "$" . $rentas[$key]['precio'] . ".00" ?></td>
-                            <td><a href="Actualizar_Productos.php?id=<?php echo $id_pro ?>&pre=<?php echo $rentas[$key]['precio']?>&nom=<?php echo $rentas[$key]['nombre']?>&des=<?php echo $rentas[$key]['descripcion']?>"><img data-toggle="tooltip" title="Actualizar datos del producto..." class="fotoUsuario" src="../img/comida/<?php echo $rentas[$key]['imagen'] ?>" alt="user" class="img-thumbnail" ></a> </td>
+                            <td><a href="Actualizar_Productos.php?id=<?php echo $id_pro ?>&pre=<?php echo $rentas[$key]['precio']?>&nom=<?php echo $rentas[$key]['nombre']?>&des=<?php echo $rentas[$key]['descripcion']?>&imag=<?php echo $rentas[$key]['imagen']?>"><img data-toggle="tooltip" title="Actualizar datos del producto..." class="fotoUsuario" src="../img/comida/<?php echo $rentas[$key]['imagen'] ?>" alt="user" class="img-thumbnail" ></a> </td>
 
                             <td><?php $status = $rentas[$key]["id_status"]; ?>
                                 <?php if ($status == 1) : $stt = 2; ?>
-                                    <a data-toggle="tooltip" title="Producto en venta" href="<?php echo "Actualizaciones.php?stt=2&id=ActStatus&p=" . $id_pro ?>" type="button" class="btn btn-success btn-mini">EnVenta</a>
+                                    <a data-toggle="tooltip" title="Producto en venta" href="<?php echo "Actualizaciones.php?stt=".$stt."&id=ActStatus&p=" . $id_pro ?>" type="button" class="btn btn-success btn-mini">EnVenta</a>
                                 <?php
                                 endif;
                                 if ($status == 2) : $stt = 1;
                                     ?>
-                                    <a data-toggle="tooltip" title="El producto no esta en Venta" href="<?php echo "Actualizaciones.php?stt=1&id=ActStatus&p=" . $id_pro ?>" type="button" class="btn btn-danger btn-mini">Cancelado</a>
+                                    <a data-toggle="tooltip" title="El producto no esta en Venta" href="<?php echo "Actualizaciones.php?stt=".$stt."&id=ActStatus&p=" . $id_pro ?>" type="button" class="btn btn-danger btn-mini">Cancelado</a>
                                 <?php endif; ?>
                             </td>
 

@@ -21,7 +21,7 @@
         'precio' => '',
         'imagen' => '',
         'descripcion' => '',        
-        'id_status' => '1',        
+        'id_status' => '2',        
         
     );
     
@@ -73,6 +73,7 @@
         if ($form->validate()){
                 $usuario = new ProductoController();
                 if(isset($_POST)){
+                     $_POST['status'] = $datosProducto['id_status'];
                     $_POST['imagen'] = $_SESSION['nombre_img'] . $_FILES['file']['name'];
                     if($usuario->registraProducto($_POST)){
                         header("Location: Productos.php");
