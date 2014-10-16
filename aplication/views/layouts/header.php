@@ -1,4 +1,12 @@
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/CAFETERIA/aplication/config.ini.php'; ?>
+<?php 
+
+include $_SERVER['DOCUMENT_ROOT'] . '/CAFETERIA/aplication/config.ini.php';
+
+
+
+
+
+?>
 <html lang="es">
 
     <head>
@@ -69,6 +77,8 @@
     <?php } // USUARIO CLIENTE
     else if ($_SESSION['admin'] == "isClient") {
         ?>
+               
+          
                     <meta http-equiv="refresh" content="50" >
 
                     <div class="container" id="page">

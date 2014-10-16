@@ -4,7 +4,20 @@
  * @author 
  * 
  */
+
+include ('../../models/Conexion.php');
+include ('../../models/Modelo.php');
+include ('../../libs/adodb5/adodb-pager.inc.php');
+include ('../../libs/adodb5/adodb.inc.php');
+include ('../../controllers/adminController/siteController.php');
+
 include '../layouts/header.php';
+
+
+include ('../../controllers/siteController/Desconexion_usuario.php');
+ 
+ 
+ 
 ?>
 
 <div class="col-lg-12" >
@@ -24,11 +37,9 @@ include '../layouts/header.php';
     
     <!-- Menu de Opciones -->
 <div class="list-group">
-    <a href="<?php echo BASEURL."views/site/inicio.php" ?>" class="list-group-item active">Informacion</a>
-    <a href="<?php echo BASEURL."views/site/Eventos.php" ?>" class="list-group-item">Eventos</a>
-    <a href="<?php echo BASEURL."views/site/Rentas.php" ?>" class="list-group-item">Rentas</a>
-    <a href="<?php echo BASEURL."views/site/Becas.php" ?>" class="list-group-item">Becas</a>
-    <a href="<?php echo BASEURL . "views/site/Venta.php" ?>" class="list-group-item">Compra / Venta</a>
+    <a href="<?php echo BASEURL."views/Client/inicio.php" ?>" class="list-group-item active">Menu</a>
+    <a href="<?php echo BASEURL."views/Client/Productos.php" ?>" class="list-group-item">Comprar Productos</a>
+    
 </div>
 <!-- Termina Menu de Opciones -->
     

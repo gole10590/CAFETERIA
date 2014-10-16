@@ -21,6 +21,7 @@ Class Usuario extends Modelo{
         'password' => array(),
         'foto_perfil' => array(),
         'id_tipo' => array(),
+        'id_tipo'=> array(),
         
     );
     
@@ -36,6 +37,7 @@ Class Usuario extends Modelo{
     private $id_tipo;
     private $password_confirma;
     private $id_usuario;
+    private $id_estado;
     
     function Usuario(){
         parent::Modelo();
@@ -56,7 +58,13 @@ Class Usuario extends Modelo{
         return $rs;
     }
     
-    
+    public function get_id_estado() {
+        return $this->id_estado;
+    }
+
+    public function set_id_estado($valor) {
+        $this->id_estado= trim($valor);
+    }
     
     public function get_telefono() {
         return $this->telefono;

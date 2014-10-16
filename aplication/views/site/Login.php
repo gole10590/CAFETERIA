@@ -1,4 +1,6 @@
-<?php session_start();
+<?php 
+
+session_start();
 
     include ('../../models/Conexion.php');
     include ('../../models/Modelo.php');
