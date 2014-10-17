@@ -17,14 +17,14 @@ include $_SERVER['DOCUMENT_ROOT'] . '/CAFETERIA/aplication/config.ini.php';
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link type="text/plain" rel="author" href="http://localhost/CAFETERIA/README.txt" />
 
-        <!-- Bootstrap -->
+         <!--Bootstrap--> 
         <link href="<?php echo BASEURL; ?>libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">    
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="<?php echo BASEURL; ?>libs/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
         <script src="<?php echo BASEURL; ?>libs/bootstrap/js/jquery.js"></script>        
         <script src="<?php echo BASEURL; ?>libs/bootstrap/js/bootstrap.min.js"></script>
         <link href="<?php echo BASEURL; ?>libs/bootstrap/css/aplication.css" rel="stylesheet" media="screen">    
-        <!-- Termina Bootstrap -->
+         <!--Termina Bootstrap--> 
 
 
 

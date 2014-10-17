@@ -32,9 +32,7 @@ $rentas = $admin->consulta_productos();
         <!-- Menu de Opciones -->
         <div class="list-group">    
             <a href="<?php echo BASEURL . "views/admin/inicio.php" ?>" class="list-group-item">Menu</a>
-            <a href="<?php echo BASEURL . "views/admin/Registro.php" ?>" class="list-group-item">Crear Usuarios</a>
-            <a href="<?php echo BASEURL . "views/admin/Estadisticas.php" ?>" class="list-group-item active">Estadisticas Venta</a>
-
+           
         </div>
         <!-- Termina Menu de Opciones -->
     </div>
@@ -43,11 +41,13 @@ $rentas = $admin->consulta_productos();
 
 
         <div class="page-header panel panel-default">            
-            <div class="panel-heading"><center><h2>Productos en Venta</h2></center></div>
+            <div class="modal-content"><center><h2>Productos en Venta</h2></center></div>
             <div class="panel-body">
                 <legend>
                     <p>
-                    <h5><center>
+                    <h4 class="modal-open" > 
+                        <center>  
+                               
                             <?php
                             $file = fopen("./Archivos_config/producto.txt", "r");
                             while (!feof($file)) {
@@ -56,7 +56,7 @@ $rentas = $admin->consulta_productos();
                             fclose($file);
                             ?>
                         </center>
-                    </h5> 
+                    </h4> 
                     <center>
                         <a data-toggle="tooltip" title="Agregar" href="RegistraProducto.php" type="button" class="btn btn-primary btn-mini">Agregar un Nuevo Producto</a>
                     </center>

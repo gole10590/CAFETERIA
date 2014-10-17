@@ -42,11 +42,11 @@ $rentas = $admin->consulta_all_usuarios($_SESSION['id_usuario']);
 
 
         <div class="page-header panel panel-default">            
-            <div class="panel-heading"><center><h2>Bloqueo General de usuarios</h2></center></div>
+            <div class="modal-content"><center><h2>Bloqueo General de usuarios</h2></center></div>
             <div class="panel-body">
                 <legend>
                     <p>
-                    <h5><center>
+                    <h4 class="modal-open" ><center>
                             <?php
                             $file = fopen("./Archivos_config/bloqueo_user.txt", "r");
                             while (!feof($file)) {
@@ -55,7 +55,7 @@ $rentas = $admin->consulta_all_usuarios($_SESSION['id_usuario']);
                             fclose($file);
                             ?>
                         </center>
-                    </h5> 
+                    </h4> 
                     
                     </p>        
                 </legend>

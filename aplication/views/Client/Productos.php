@@ -50,7 +50,7 @@ $rentas = $admin->consulta_productosClient();
                             <?php
                             $file = fopen("./Archivos_config/producto.txt", "r");
                             while (!feof($file)) {
-                            echo fgets($file) . "<br />";
+                                echo fgets($file) . "<br />";
                             }
                             fclose($file);
                             ?>
@@ -75,61 +75,83 @@ $rentas = $admin->consulta_productosClient();
 
                 <tbody>
                     <?php foreach ($rentas as $key => $value) : $id_pro = $rentas[$key]["id_producto"]
-                    ?>
-                    <tr>
-                        <td>
-                            <!--<a data-toggle="tooltip" title="Eliminar producto de BD" href="<?php echo "Actualizaciones.php?id=EliminaProd&p=" . $id_pro ?>" type="button" class="btn btn-danger btn-mini">Eliminar</a>-->
-                            <a type="button" class="btn btn-success btn-mini" data-toggle="modal" data-target="#<?php echo $rentas[$key]["id_producto"] ?>" >Agregar al pedido</a>
+                        ?>
+                        <tr>
+                            <td>
+                                <!--<a data-toggle="tooltip" title="Eliminar producto de BD" href="<?php echo "Actualizaciones.php?id=EliminaProd&p=" . $id_pro ?>" type="button" class="btn btn-danger btn-mini">Eliminar</a>-->
+                                <a type="button" class="btn btn-success btn-mini" data-toggle="modal" data-target="#<?php echo $rentas[$key]["id_producto"] ?>" >Agregar al pedido</a>
 
-                        </td>
-                        <td><?php echo $rentas[$key]['nombre'] ?></td>
-                        <td><?php echo "$" . $rentas[$key]['precio'] . ".00" ?></td>
-                        <td><?php echo $rentas[$key]['descripcion'] ?></td>
-                        <td><img data-toggle="tooltip"  class="fotoUsuario" src="../img/comida/<?php echo $rentas[$key]['imagen'] ?>" alt="user" class="img-thumbnail" ></a> </td>
-
-
-
-                    </tr>
+                            </td>
+                            <td><?php echo $rentas[$key]['nombre'] ?></td>
+                            <td><?php echo "$" . $rentas[$key]['precio'] . ".00" ?></td>
+                            <td><?php echo $rentas[$key]['descripcion'] ?></td>
+                            <td><img data-toggle="tooltip"  class="fotoUsuario" src="../img/comida/<?php echo $rentas[$key]['imagen'] ?>" alt="user" class="img-thumbnail" ></a> </td>
 
 
 
+                        </tr>
 
 
-                    <!-- Modal -->
-                <div class="modal fade" id="<?php echo $rentas[$key]["id_producto"] ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                <h3 class="modal-title" id="myModalLabel"><?php echo "¿Está seguro que desea agregar  <strong>" . $rentas[$key]["nombre"] . "</strong> al pedido?" ?></h3>
-                            </div>
-                            <div class="modal-body">                                          
-                                <div class="col-lg-3">
-                                    <img class="fotoUsuario" src="<?php echo BASEURL . "views/img/comida/" . $rentas[$key]["imagen"] ?>" />                                              
+
+
+
+                        <!-- Modal -->
+                    <div class="modal fade" id="<?php echo $rentas[$key]["id_producto"] ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <center>
+                                        <h3 class="modal-title" id="myModalLabel"><?php echo "¿Está seguro que desea agregar  <strong>" . $rentas[$key]["nombre"] . "</strong> al pedido?" ?></h3>
+                                    </center>
                                 </div>
-                                <div class="col-lg-9">
-                                    <?php echo $rentas[$key]["descripcion"] ?><br/><br/>
-                                </div>                                          
+                                <div class="modal-content">                                          
+                                    <div class="col-lg-3">
+                                        <img class="fotoComida" src="<?php echo BASEURL . "views/img/comida/" . $rentas[$key]["imagen"] ?>" />                                              
+                                    </div>
+                                    <div class="col-lg-9">
+                                        <h3 class="modal-body" id="myModalLabel">  <?php echo $rentas[$key]["descripcion"] ?><br/><br/> </h3> 
+                                    </div>
 
-                            </div>
-                            <div class="modal-footer">
-                                <button data-toggle="tooltip" title="Cancelar" type="button" class="btn btn-danger btn-mini" data-dismiss="modal">Cancelar</button>
-                                <a data-toggle="tooltip" title="Agregar al pedido" href="<?php echo "Add_product_pedido.php?id=AddProd&p=" . $id_pro ?>" type="button" class="btn btn-success btn-mini">Agregar</a>
+                                </div>
+                                <div class="modal-footer">
 
-                            </div>
-                        </div><!-- /.modal-content -->
-                    </div><!-- /.modal-dialog -->
-                </div><!-- /.modal -->
+                                    <h3 class="modal-footer" id="myModalLabel"><?php echo "Cantidad de productos:" ?>
+
+                                        <select class="modal-content" id="myModalLabel" name="cantida_prod">
+                                            <option value="1" selected="selected">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                        </select>
+
+                                    </h3>
+
+
+
+                                    <button data-toggle="tooltip" title="Cancelar" type="button" class="btn btn-danger btn-mini" data-dismiss="modal">Cancelar</button>
+                                    <a data-toggle="tooltip" title="Agregar al pedido" href="<?php echo "Add_product_pedido.php?id=AddProd&p=" . $id_pro ?>" type="button" class="btn btn-success btn-mini">Agregar</a>
+
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
 
 
                 <?php endforeach; ?> 
 
                 </tbody>
                 <tfoot>
-                    
-               
+
+
                 <a data-toggle="tooltip" title="Agregar al pedido" href="<?php echo "Add_product_pedido.php?id=Insert&p=" . $id_pro ?>" type="button" class="btn btn-primary btn-mini">Generar Pedido</a>
-                
+
                 </tfoot>
 
             </table>

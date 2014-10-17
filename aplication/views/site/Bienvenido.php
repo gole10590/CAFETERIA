@@ -56,7 +56,7 @@ include ('../layouts/header.php');
         <div class="panel-heading"><center><h2>Bienvenido al sitio web de la Cafetería III del ITC.</h2></center></div>
 
         <div class="panel-body">
-            <p class="lead">
+            <h4 class="modal-open">
             <center>
 
                 <?php
@@ -67,7 +67,7 @@ include ('../layouts/header.php');
                 fclose($file);
                 ?> <br/><br/>                
             </center>
-            </p>
+            </h4>
         </div>
 
 
@@ -77,6 +77,8 @@ include ('../layouts/header.php');
                 <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
                 <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
                 <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                <li data-target="#carousel-example-generic" data-slide-to="3" class=""></li>
+                <li data-target="#carousel-example-generic" data-slide-to="4" class=""></li>
             </ol>
             <div class="carousel-inner">
                 <div class="item active">
@@ -86,13 +88,13 @@ include ('../layouts/header.php');
                     <center><img class="imgCarrousel" src="../img/comida/Sonhar.jpg" alt="Second slide"></center>
                 </div>                
                 <div class="item ">
-                    <center><img class="imgCarrousel" src="../img/comida/ensalada.jpg" alt="Second slide"></center>
+                    <center><img class="imgCarrousel" src="../img/comida/ensalada.jpg" alt="Third slide"></center>
                 </div> 
                 <div class="item ">
-                    <center><img class="imgCarrousel" src="../img/comida/pizza.jpg" alt="Second slide"></center>
+                    <center><img class="imgCarrousel" src="../img/comida/pizza.jpg" alt="Fourth slide"></center>
                 </div>
                 <div class="item ">
-                    <center><img class="imgCarrousel" src="../img/comida/sand.jpg" alt="Second slide"></center>
+                    <center><img class="imgCarrousel" src="../img/comida/sand.jpg" alt="Fifth slide"></center>
                 </div> 
             </div>
             <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
