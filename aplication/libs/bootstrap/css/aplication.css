@@ -33,6 +33,11 @@ body {
     height:108px;
 }
 
+.fotoComida{
+    width:150px; 
+    height:150px;
+}
+
 .imgCarrousel {
     width:590px; 
     height:280px;

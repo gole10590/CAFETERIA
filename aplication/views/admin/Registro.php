@@ -22,11 +22,11 @@
     
     foreach ($tipo_usuario as $key => $value)
     {        
-          $arreglo [ $value['id_tipo']] = $value['descripcion'];
+          $arreglo [ $value['id_tipo']] = $value['tipo_user'];
     }
     
     if (count($tipo_usuario)!=0) {
-        $id_tipo = $tipo_usuario[0]['descripcion'];
+        $id_tipo = $tipo_usuario[0]['tipo_user'];
     } else {
         $id_tipo= '';
     }
@@ -39,6 +39,7 @@
         'amaterno' => '',
         'email' => '',        
         'password' => '',
+        'telefono'=>'',
         'password_confirma' => '',
         'foto_perfil' => 'user.jpg',       
         'captcha' => ''
