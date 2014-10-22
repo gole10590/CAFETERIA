@@ -2,11 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/xampp/htdocs/CAFETERIA/aplication/views/site/CerrarSession.php</file>
-            <file>file:/C:/xampp/htdocs/CAFETERIA/aplication/views/site/Login.php</file>
-            <file>file:/C:/xampp/htdocs/CAFETERIA/aplication/controllers/siteController/loginController.php</file>
-            <file>file:/C:/xampp/htdocs/CAFETERIA/aplication/views/layouts/header.php</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

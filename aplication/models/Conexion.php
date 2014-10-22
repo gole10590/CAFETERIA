@@ -12,7 +12,7 @@ class Conexion {
         $this->db = ADONewConnection('mysql');
         $this->db->debug = FALSE;
                                       #usuario  #Password   #nombre BD
-        $this->db->Connect('localhost','root', '', 'cafeteria');
+        $this->db->Connect('localhost','root', '123Tamarindo', 'cafeteria');
 
     }
     

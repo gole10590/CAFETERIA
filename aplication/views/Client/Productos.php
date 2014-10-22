@@ -150,7 +150,7 @@ $rentas = $admin->consulta_productosClient();
                 <tfoot>
 
 
-                <a data-toggle="tooltip" title="Agregar al pedido" href="<?php echo "Add_product_pedido.php?id=Insert&p=" . $id_pro ?>" type="button" class="btn btn-primary btn-mini">Generar Pedido</a>
+                <a data-toggle="tooltip" title="Agregar al pedido"  href="<?php echo "Add_product_pedido.php?id=Insert&p=" . $id_pro ?>" type="button" class="btn btn-primary btn-mini">Generar Pedido</a>
 
                 </tfoot>
 

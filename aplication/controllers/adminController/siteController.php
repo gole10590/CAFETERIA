@@ -65,7 +65,7 @@ Class siteController{
     }
      function consulta_all_usuarios_fraude(){
         $sisinfo = new Modelo();
-        $sql = ("SELECT * FROM usuario u join pedido p on u.id_usuario=p.id_usuario 
+        $sql = ("SELECT  DISTINCT  * FROM usuario u join pedido p on u.id_usuario=p.id_usuario 
                        join estado_pedido ep on ep.id_estado_pedido = p.id_estado_pedido
                        join tipo_usuario t on u.id_tipo=t.id_tipo 
                        join estado_usuario eu on eu.id_estado = u.id_estado
