@@ -7,7 +7,7 @@
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link type="text/plain" rel="author" href="http://localhost/CAFETERIA/Team.txt" />
+        <link type="text/plain" rel="author" href="http://localhost/CAFETERIA/README.md" />
 
         <!-- Bootstrap -->
         <link href="<?php echo BASEURL; ?>libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">    

@@ -1,0 +1,1 @@
+..Modificar el archivo info_inicio.txt
