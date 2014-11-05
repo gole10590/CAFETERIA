@@ -24,12 +24,8 @@ include '../layouts/header.php';
     
     <!-- Menu de Opciones -->
 <div class="list-group">
-    <a href="<?php echo BASEURL."views/site/inicio.php" ?>" class="list-group-item active">Informacion</a>
-    <a href="<?php echo BASEURL."views/site/Eventos.php" ?>" class="list-group-item">Eventos</a>
-    <a href="<?php echo BASEURL."views/site/Rentas.php" ?>" class="list-group-item">Rentas</a>
-    <a href="<?php echo BASEURL."views/site/Becas.php" ?>" class="list-group-item">Becas</a>
-    <a href="<?php echo BASEURL . "views/site/Venta.php" ?>" class="list-group-item">Compra / Venta</a>
-</div>
+    <a href="<?php echo BASEURL."views/Empleado/pedidos.php" ?>" class="list-group-item active">Pedidos</a>
+    </div>
 <!-- Termina Menu de Opciones -->
     
 </div>
@@ -40,41 +36,54 @@ include '../layouts/header.php';
 <div class="col-lg-9">
     <div class="page-header panel panel-default">
         <div class="panel-heading"><center><h2>Bienvenido <?php echo $_SESSION['nombre']?></h2></center></div>
+        
         <div class="panel-body">
-        <p class="lead">
+        <h4 class="modal-open" >
             <center>
-                AQUI VA INFROMACION PARA LOS Empleados<br/><br/>                
+
+                <?php
+                $file = fopen("./Archivos_config/info_inicio.txt", "r");
+                while (!feof($file)) {
+                    echo fgets($file) . "<br />";
+                }
+                fclose($file);
+                ?>   <br/><br/>                
             </center>
-        </p>
+        </h4>
         </div>
         
         <!-- Carrousel -->
         <div id="carousel-example-generic" class="carousel slide bs-docs-carousel-example">
             <ol class="carousel-indicators">
                 <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
-                <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="3" class="active"></li>
+
             </ol>
             <div class="carousel-inner">
                 <div class="item active">
-                    <center><img class="imgCarrousel" src="../img/sisinfo.jpg" alt="First slide"></center>
+                    <center><img class="imgCarrousel" src="../img/cafeteria1.jpg" alt="First slide"></center>
                 </div>                
                 <div class="item ">
-                    <center><img class="imgCarrousel" src="../img/404.png" alt="Second slide"></center>
+                    <center><img class="imgCarrousel" src="../img/cafeteria2.jpg" alt="Second slide"></center>
                 </div>                
                 <div class="item ">
-                    <center><img class="imgCarrousel" src="../img/logo.gif" alt="Second slide"></center>
-                </div>                
+                    <center><img class="imgCarrousel" src="../img/cafeteria3.jpg" alt="Third slide"></center>
+                </div> 
+                <div class="item ">
+                    <center><img class="imgCarrousel" src="../img/cafeteria4.jpg" alt="Fourth slide"></center>
+                </div>
+                
             </div>
-            <a data-toggle="tooltip" title="Imagen Anterior" class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
                 <span class="icon-prev"></span>
             </a>
-            <a data-toggle="tooltip" title="Siguente Imagen" class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
                 <span class="icon-next"></span>
             </a>
         </div>
         <!-- Termina Carrousel -->
-
     </div>
 </div>
 <!-- Termina Mensaje Bienvenida -->

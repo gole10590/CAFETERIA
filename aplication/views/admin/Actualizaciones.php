@@ -24,17 +24,21 @@ if ($identificador == "ActStatus") {
         $id_producto = $_GET["p"];
         $admin->elimina_producto($id_producto);
         header("Location: " . BASEURL . "views/admin/Productos.php");
-    } else 
-    {
-        if ($identificador == "ActEdoUser")
-        {
-            $id_usuario =$_GET["p"];
-             $estado = $_GET["stt"];
-             $admin->actualiza_Edo_user($estado, $id_usuario);
+    } else {
+        if ($identificador == "ActEdoUser") {
+            $id_usuario = $_GET["p"];
+            $estado = $_GET["stt"];
+            $admin->actualiza_Edo_user($estado, $id_usuario);
             header("Location: " . BASEURL . "views/admin/Bloquear_usuarios.php");
-        }
-        else {
-        die("ERROR ACTUALIZANDO-----");
+        } else {
+            if ($identificador == "UserFraude") {
+                $status = $_GET["stt"];
+                $id_usuario = $_GET["p"];
+                $admin->actualiza_Edo_user($status, $id_usuario);
+                header("Location: " . BASEURL . "views/admin/Bloquear_usuarios_fraudulentos.php");
+            } else {
+                die("ERROR ACTUALIZANDO-----");
+            }
         }
     }
 }

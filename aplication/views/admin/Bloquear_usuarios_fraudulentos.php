@@ -69,7 +69,8 @@ $rentas = $admin->consulta_all_usuarios_fraude();
                         <th>Email</th>
 
                         <th><center>Tipo Usuario</center></th>
-                </tr>
+                        <th><center>#Pedidos Cancelados</center></th>
+                    </tr>
                 </thead>
 
                 <tbody>
@@ -83,16 +84,20 @@ $rentas = $admin->consulta_all_usuarios_fraude();
                             <td><?php echo  $rentas[$key]['email'] ?></td>
                             <td><?php echo  $rentas[$key]['tipo_user'] ?></td>
                             
+                             <td><?php echo  $rentas[$key]['Cant_Cancel'] ?></td>
+                            
                             <td><?php $status = $rentas[$key]["id_estado"]; ?>
                                 <?php if ($status == 1) : $stt = 2; ?>
-                                    <a data-toggle="tooltip" title="Usuario Activo" href="<?php echo "Actualizaciones.php?stt=".$stt."&id=ActEdoUser&p=" . $id_pro ?>" type="button" class="btn btn-success btn-mini"><?php echo $rentas[$key]["estado"]; ?></a>
+                                    <a data-toggle="tooltip" title="Usuario Activo" href="<?php echo "Actualizaciones.php?stt=".$stt."&id=UserFraude&p=" . $id_pro ?>" type="button" class="btn btn-success btn-mini"><?php echo $rentas[$key]["estado"]; ?></a>
                                 <?php
                                 endif;
                                 if ($status == 2) : $stt = 1;
                                     ?>
-                                    <a data-toggle="tooltip" title="Usuario Bloqueado" href="<?php echo "Actualizaciones.php?stt=".$stt."&id=ActEdoUser&p=" . $id_pro ?>" type="button" class="btn btn-danger btn-mini"><?php echo $rentas[$key]["estado"]; ?></a>
+                                    <a data-toggle="tooltip" title="Usuario Bloqueado" href="<?php echo "Actualizaciones.php?stt=".$stt."&id=UserFraude&p=" . $id_pro ?>" type="button" class="btn btn-danger btn-mini"><?php echo $rentas[$key]["estado"]; ?></a>
                                 <?php endif; ?>
                             </td>
+                            
+                           
 
                         </tr>
 
