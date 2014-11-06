@@ -14,7 +14,7 @@ include ('../../controllers/adminController/siteController.php');
 include '../layouts/header.php';
 
 $admin = new siteController();
-$rentas = $admin->consulta_productos();
+$rentas = $admin->consulta_lista_pedidos();
 ?>
 
 <div class="col-lg-12" >
@@ -66,11 +66,13 @@ $rentas = $admin->consulta_productos();
                     <tr>
                         <th>¿PREPARAR PEDIDO?</th>
                         <th>Lista de productos</th>
+                        <th>Comentarios</th>
                         <th>STATUS</th>
                         <th>Total</th>
                         <th>ID_PEDIDO</th>
 
                         <th><center>¿Listo?</center></th>
+                        <th><center>¿PAGAR?</center></th>
                 </tr>
                 </thead>
 
@@ -86,6 +88,7 @@ $rentas = $admin->consulta_productos();
                             <td><?php echo $rentas[$key]['nombre'] ?></td>
                             <td><?php echo "$" . $rentas[$key]['precio'] . ".00" ?></td>
                             <td><?php echo "$" . $rentas[$key]['precio'] . ".00" ?></td>
+                             <td><?php echo "$" . $rentas[$key]['precio'] . ".00" ?></td>
                             <td><a href="Actualizar_Productos.php?id=<?php echo $id_pro ?>&pre=<?php echo $rentas[$key]['precio']?>&nom=<?php echo $rentas[$key]['nombre']?>&des=<?php echo $rentas[$key]['descripcion']?>&imag=<?php echo $rentas[$key]['imagen']?>"><img data-toggle="tooltip" title="Actualizar datos del producto..." class="fotoUsuario" src="../img/comida/<?php echo $rentas[$key]['imagen'] ?>" alt="user" class="img-thumbnail" ></a> </td>
 
                             <td><?php $status = $rentas[$key]["id_status"]; ?>
@@ -96,6 +99,16 @@ $rentas = $admin->consulta_productos();
                                 if ($status == 2) : $stt = 1;
                                     ?>
                                     <a data-toggle="tooltip" title="El producto no esta en Venta" href="<?php echo "Actualizaciones.php?stt=".$stt."&id=ActStatus&p=" . $id_pro ?>" type="button" class="btn btn-danger btn-mini">LISTO</a>
+                                <?php endif; ?>
+                            </td>
+                             <td><?php $status = $rentas[$key]["id_status"]; ?>
+                                <?php if ($status == 1) : $stt = 2; ?>
+                                    <a data-toggle="tooltip" title="Producto en venta" href="<?php echo "Actualizaciones.php?stt=".$stt."&id=ActStatus&p=" . $id_pro ?>" type="button" class="btn btn-success btn-mini">PAGAR!!</a>
+                                <?php
+                                endif;
+                                if ($status == 2) : $stt = 1;
+                                    ?>
+                                    <a data-toggle="tooltip" title="El producto no esta en Venta" href="<?php echo "Actualizaciones.php?stt=".$stt."&id=ActStatus&p=" . $id_pro ?>" type="button" class="btn btn-danger btn-mini">PAGADO!!!</a>
                                 <?php endif; ?>
                             </td>
 

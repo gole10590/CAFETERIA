@@ -102,6 +102,12 @@ WHERE ep.id_estado_pedido =5;" );
         $sql = ("delete  from producto  WHERE  id_producto =" . $id_producto . ";");
         $sisinfo->consulta_sql($sql);
     }
+    
+     function consulta_lista_pedidos() {
+        $sisinfo = new Modelo();
+        $sql = ("delete  from producto  ;");
+        $sisinfo->consulta_sql($sql);
+    }
 
     function actualiza_usuario($valores) {
 
