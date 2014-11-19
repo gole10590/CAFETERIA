@@ -31,8 +31,10 @@ if ($identificador == "email")
     $status = $_GET["stt"];
     $id_pedido = $_GET["p"];
     $correo=$_GET["em"];
+     $id_pedido=$_GET["id_ped"];
+   
     $asunto="SU PEDIDO ESTA LISTO";
-    $mensaje="SU PEDIDO YA ESTA LISTO PARA RECOGER....";
+    $mensaje="SU PEDIDO YA ESTA LISTO PARA RECOGER.... \nNumero de pedido: ".$id_pedido;
     
    
     $send_email->enviaMail($correo,$asunto,$mensaje);

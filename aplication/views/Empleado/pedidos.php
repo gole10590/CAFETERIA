@@ -14,8 +14,8 @@ include ('../../controllers/adminController/siteController.php');
 include '../layouts/header.php';
 
 $admin = new siteController();
+$admin2 = new siteController();
 $rentas = $admin->consulta_pedidos_activos();
-$lista = $admin->lista_productos();
 ?>
 
 <div class="col-lg-12" >
@@ -65,16 +65,16 @@ $lista = $admin->lista_productos();
             <table class="table table-striped " id="example">
                 <thead>
                     <tr>
-                        <th>¿PREPARAR PEDIDO?</th>
-                        <th>Lista de productos</th>
-                        <th>COMENTARIO</th>
-                        <th>STATUS</th>
-                        <th>Total</th>
-                        <th>ID_PEDIDO</th>
+                        <th> <h6 class="modal-open" >¿PREPARAR PEDIDO?</h6></th>
+                        <th><h6 class="modal-open" >Lista de productos</h6></th>
+                        <th><h6 class="modal-open" >COMENTARIO</h6></th>
+                        <th><h6 class="modal-open" >STATUS</h6></th>
+                        <th><h6 class="modal-open" >Total</h6></th>
+                        <th><h6 class="modal-open" >ID_PEDIDO</h6></th>
 
-                        <th><center>¿Listo?</center></th>
-                <th><center>¿Pagar?</center></th>
-                <th><center>¿Cancelar?</center></th>
+                        <th><center><h6 class="modal-open" >¿Listo?</h6></center></th>
+                <th><center><h6 class="modal-open" >¿Pagar?</h6></center></th>
+                <th><center><h6 class="modal-open" >¿Cancelar?</h6></center></th>
                 </tr>
                 </thead>
 
@@ -93,20 +93,30 @@ $lista = $admin->lista_productos();
                             </td>
 
                             <td>  
-                                
+                               
+                                <?php $lista = $admin2->lista_productos($id_pro) ?>  
+                                <?php
+                                foreach ($lista as $elemento) {
+                                    echo $elemento['cantidad'] ."-".$elemento['nombre'].'</br>';
+                                }
+                                ?>
+                             
+
                             </td>
                             <td>  
+                                 <h6 class="modal-open" > 
                                 <?php echo $rentas[$key]['comentario'] ?>
+                                 </h6> 
                             </td>
-                            <td><?php echo $rentas[$key]['status_pedido'] ?></td>
+                            <td> <h6 class="modal-open" > <?php echo $rentas[$key]['status_pedido'] ?></h6> </td>
                             <td>
-                                <?php echo $rentas[$key]['total'] ?>
+                                <?php echo "$" . $rentas[$key]['total'] ?>
                             </td>
                             <td><?php echo $rentas[$key]['id_pedido'] ?></td>
 
                             <td><?php $status = $rentas[$key]["id_estado_pedido"]; ?>
                                 <?php if ($status == 2) : $stt = 3; ?>
-                                    <a data-toggle="tooltip" title="Enviar correo" href="<?php echo "Actualizaciones.php?stt=" . $stt . "&id=email&em=".$rentas[$key]['email']."&p=" . $id_pro ?>" type="button" class="btn btn-success btn-mini">LISTO!!</a>
+                                    <a data-toggle="tooltip" title="Enviar correo" href="<?php echo "Actualizaciones.php?stt=" . $stt . "&id=email&id_ped=".$rentas[$key]['id_pedido']."&em=" . $rentas[$key]['email'] . "&p=" . $id_pro ?>" type="button" class="btn btn-success btn-mini">LISTO!!</a>
                                     <?php
                                 endif;
                                 ?>
@@ -114,9 +124,9 @@ $lista = $admin->lista_productos();
                             </td>
                             <td><?php $status = $rentas[$key]["id_estado_pedido"]; ?>
                                 <?php if ($status == 3) : $stt = 4; ?>
-                              <a type="button" class="btn btn-success btn-mini" data-toggle="modal" data-target="#<?php echo $rentas[$key]["id_pedido"] ?>" >PAGAR</a>
-      
-                              <?php
+                                    <a type="button" class="btn btn-success btn-mini" data-toggle="modal" data-target="#<?php echo $rentas[$key]["id_pedido"] ?>" >PAGAR</a>
+
+                                    <?php
                                 endif;
                                 ?>
 
@@ -133,7 +143,7 @@ $lista = $admin->lista_productos();
                         </tr>
 
 
-                 <!-- Modal -->
+                        <!-- Modal -->
                     <div class="modal fade" id="<?php echo $rentas[$key]["id_pedido"] ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -144,16 +154,16 @@ $lista = $admin->lista_productos();
                                     </center>
                                 </div>
                                 <div class="modal-content">                                          
-                                       <div class="col-lg-9">
-                                        <h5 class="modal-body" id="myModalLabel">  <?php echo "TOTAL : "."$". $rentas[$key]['total']."" ?><br/><br/> </h3> 
-                                        </div>
                                     <div class="col-lg-9">
-                                        <h5 class="modal-body" id="myModalLabel">  <?php echo "NUM. CUENTA : ". $rentas[$key]['id_usuario'] ?><br/><br/> </h3> 
-                                        </div>
-                                   <div class="col-lg-9">
-                                        <h5 class="modal-body" id="myModalLabel">  <?php echo "NOMBRE CLIENTE : ". $rentas[$key]['nom']." ".$rentas[$key]['apaterno']." ".$rentas[$key]['amaterno'] ?><br/><br/> </h3> 
+                                        <h5 class="modal-body" id="myModalLabel">  <?php echo "TOTAL : " . "$" . $rentas[$key]['total'] . "" ?><br/><br/> </h3> 
                                     </div>
-                                 
+                                    <div class="col-lg-9">
+                                        <h5 class="modal-body" id="myModalLabel">  <?php echo "NUM. CUENTA : " . $rentas[$key]['id_usuario'] ?><br/><br/> </h3> 
+                                    </div>
+                                    <div class="col-lg-9">
+                                        <h5 class="modal-body" id="myModalLabel">  <?php echo "NOMBRE CLIENTE : " . $rentas[$key]['nom'] . " " . $rentas[$key]['apaterno'] . " " . $rentas[$key]['amaterno'] ?><br/><br/> </h3> 
+                                    </div>
+
 
                                 </div>
                                 <div class="modal-footer">
@@ -167,7 +177,8 @@ $lista = $admin->lista_productos();
                     </div><!-- /.modal -->
 
 
-                    <?php endforeach; ?> 
+                <?php endforeach; ?> 
+
 
                 </tbody>
             </table>

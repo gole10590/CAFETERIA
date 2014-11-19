@@ -58,6 +58,12 @@ class Modelo extends Conexion {
         $grid = new ADODB_Pager($this->db, $sql);
         $grid->Render($rows_per_page = $num);
     }
+    
+    public function show_grid2($consulta,$num='10') {
+        $sql = $consulta;
+        $grid = new ADODB_Pager($this->db, $sql);
+        $grid->Render($rows_per_page = $num);
+    }
 
 }
 ?>

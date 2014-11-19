@@ -126,10 +126,13 @@ from
         $sisinfo->consulta_sql($sql);
     }
     
-      function lista_productos() {
+      function lista_productos($id_pedido) {
         $sisinfo = new Modelo();
-        $sql = ("SELECT dp.id_pedido, pr.nombre FROM detalle_pedido dp join producto pr on pr.id_producto=dp.id_producto;");
-        $sisinfo->consulta_sql($sql);
+        $sql = ("SELECT pr.nombre,dp.cantidad FROM detalle_pedido dp join producto pr on pr.id_producto=dp.id_producto where dp.id_pedido=".$id_pedido.";");
+       
+        $rs = $sisinfo->consulta_sql($sql);
+        $arreglo = $rs->GetArray();
+        return $arreglo;
     }
 
     function actualiza_Edo_user($estado, $id_usuario) {
