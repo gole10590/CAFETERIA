@@ -40,7 +40,7 @@ class RegistroController extends Usuario{
              {
                 //return $this->inserta($this->get_atributos());
                 if ($this->inserta($this->get_atributos())) {
-                    if ($this->enviaMail($valores['email'], "CORREO REGISTRADO", "SU CUENTA HA SIDO CREADA CON EXITO")) {
+                    if ($this->enviaMail($valores['email'], "CORREO REGISTRADO", "SU CUENTA HA SIDO CREADA CON EXITO\nUsuario :".$valores['email']."\nPassword: ".$valores['password']."")) {
                         
                         return true;
                     }
@@ -53,7 +53,7 @@ class RegistroController extends Usuario{
         }  
     }
     
-    private function enviaMail($correo,$asunto,$mensaje){
+      public  function enviaMail($correo,$asunto,$mensaje){
                
                 
                 require("../../libs/PHPMailer_v2.0.4/class.phpmailer.php"); 

@@ -63,13 +63,11 @@ Class siteController {
 
     function consulta_all_usuarios_fraude() {
         $sisinfo = new Modelo();
-        $sql = ("SELECT u.id_usuario, u.nombre, u.email, t.tipo_user, eu.id_estado,eu.estado, COUNT( u.id_usuario ) AS Cant_Cancel
-FROM usuario u
-JOIN pedido p ON u.id_usuario = p.id_usuario
-JOIN estado_pedido ep ON ep.id_estado_pedido = p.id_estado_pedido
-JOIN tipo_usuario t ON u.id_tipo = t.id_tipo
-JOIN estado_usuario eu ON eu.id_estado = u.id_estado
-WHERE ep.id_estado_pedido =5;" );
+        $sql = ("SELECT id_usuario, nombre, email, tipo_user, id_estado,estado ,COUNT(id_usuario) as Cant_Cancel from (SELECT u.id_usuario, u.nombre, u.email, t.tipo_user, eu.id_estado,eu.estado
+FROM usuario u JOIN pedido p ON u.id_usuario = p.id_usuario 
+JOIN estado_pedido ep ON ep.id_estado_pedido = p.id_estado_pedido 
+JOIN tipo_usuario t ON u.id_tipo = t.id_tipo JOIN estado_usuario eu ON eu.id_estado = u.id_estado 
+WHERE ep.id_estado_pedido =5) as cancel group by id_usuario;" );
         $rs = $sisinfo->consulta_sql($sql);
         $arreglo = $rs->GetArray();
         return $arreglo;
@@ -82,11 +80,55 @@ WHERE ep.id_estado_pedido =5;" );
         $arreglo = $rs->GetArray();
         return $arreglo;
     }
+    
+    
+    
+    function consulta_pedidos_activos() {
+        $sisinfo = new Modelo();
+        $sql = ("SELECT id_pedido,id_estado_pedido,
+          status_pedido,comentario,nom,apaterno,amaterno,id_usuario,email, SUM( (precio * cantidad) - DESCUENTO ) AS total
+
+from
+(select pe.id_pedido,pe.id_estado_pedido,
+          ep.status_pedido,p.nombre,p.precio,dv.cantidad,
+             dv.descuento,pe.comentario,u.nombre as nom,u.apaterno,u.amaterno,u.email,u.id_usuario
+      from 
+       
+      pedido pe join estado_pedido ep on ep.id_estado_pedido=pe.id_estado_pedido
+        join  detalle_pedido dv ON dv.id_pedido = pe.id_pedido
+           join producto p on p.id_producto=dv.id_producto
+            join usuario u on u.id_usuario=pe.id_usuario 
+          )as detalle 
+          where  id_estado_pedido=1 or  id_estado_pedido=2  or id_estado_pedido=3           
+             group by id_pedido
+     
+ ;" );
+        $rs = $sisinfo->consulta_sql($sql);
+        $arreglo = $rs->GetArray();
+        return $arreglo;
+    }
+    
+    
+    
+    
 
     function actualiza_producto($status, $id_producto) {
         $sisinfo = new Modelo();
         $sql = ("UPDATE  `producto` SET  `id_status` =  '"
                 . $status . "' WHERE  `producto`.`id_producto` =" . $id_producto . ";");
+        $sisinfo->consulta_sql($sql);
+    }
+    
+    function actualiza_pedido_estatus($status, $id_pedido) {
+        $sisinfo = new Modelo();
+        $sql = ("UPDATE  `pedido` SET  `id_estado_pedido` =  '"
+                . $status . "' WHERE  `pedido`.`id_pedido` =" . $id_pedido . ";");
+        $sisinfo->consulta_sql($sql);
+    }
+    
+      function lista_productos() {
+        $sisinfo = new Modelo();
+        $sql = ("SELECT dp.id_pedido, pr.nombre FROM detalle_pedido dp join producto pr on pr.id_producto=dp.id_producto;");
         $sisinfo->consulta_sql($sql);
     }
 
@@ -100,12 +142,6 @@ WHERE ep.id_estado_pedido =5;" );
     function elimina_producto($id_producto) {
         $sisinfo = new Modelo();
         $sql = ("delete  from producto  WHERE  id_producto =" . $id_producto . ";");
-        $sisinfo->consulta_sql($sql);
-    }
-    
-     function consulta_lista_pedidos() {
-        $sisinfo = new Modelo();
-        $sql = ("delete  from producto  ;");
         $sisinfo->consulta_sql($sql);
     }
 
