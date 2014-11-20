@@ -80,9 +80,81 @@ WHERE ep.id_estado_pedido =5) as cancel group by id_usuario;" );
         $arreglo = $rs->GetArray();
         return $arreglo;
     }
-    
-    
-    
+
+    function consulta_prod_mas_vendidos() {
+        $sisinfo = new Modelo();
+        $sql = ("SELECT id_pedido,id_estado_pedido,id_producto,nombre,
+           SUM( (precio * cantidad) - DESCUENTO ) AS total,
+           (SUM(cantidad))as cantidad
+from
+(select pe.id_pedido,pe.id_estado_pedido,p.id_producto,
+          ep.status_pedido,p.nombre,p.precio,dv.cantidad,
+             dv.descuento,pe.comentario,u.nombre as nom,u.apaterno,u.amaterno,u.email,u.id_usuario
+      from 
+       
+      pedido pe join estado_pedido ep on ep.id_estado_pedido=pe.id_estado_pedido
+        join  detalle_pedido dv ON dv.id_pedido = pe.id_pedido
+           join producto p on p.id_producto=dv.id_producto
+            join usuario u on u.id_usuario=pe.id_usuario 
+          )as detalle 
+          where  id_estado_pedido=4           
+             group by id_producto
+             order by cantidad desc
+     
+ limit 0,10 ;");
+    }
+
+    function consulta_prod_menos_vendidos() {
+        $sisinfo = new Modelo();
+        $sql = ("SELECT id_pedido,id_estado_pedido,id_producto,nombre,
+           SUM( (precio * cantidad) - DESCUENTO ) AS total,
+           (SUM(cantidad))as cantidad
+from
+(select pe.id_pedido,pe.id_estado_pedido,p.id_producto,
+          ep.status_pedido,p.nombre,p.precio,dv.cantidad,
+             dv.descuento,pe.comentario,u.nombre as nom,u.apaterno,u.amaterno,u.email,u.id_usuario
+      from 
+       
+      pedido pe join estado_pedido ep on ep.id_estado_pedido=pe.id_estado_pedido
+        join  detalle_pedido dv ON dv.id_pedido = pe.id_pedido
+           join producto p on p.id_producto=dv.id_producto
+            join usuario u on u.id_usuario=pe.id_usuario 
+          )as detalle 
+          where  id_estado_pedido=4           
+             group by id_producto
+             order by cantidad asc
+     
+ limit 0,10 ;");
+        $rs = $sisinfo->consulta_sql($sql);
+        $arreglo = $rs->GetArray();
+        return $arreglo;
+    }
+
+    function consulta_total_ventas() {
+        $sisinfo = new Modelo();
+        $sql = ("SELECT id_pedido,id_estado_pedido,id_producto,nombre,
+           SUM( (precio * cantidad) - DESCUENTO ) AS total,
+           (SUM(cantidad))as cantidad
+from
+(select pe.id_pedido,pe.id_estado_pedido,p.id_producto,
+          ep.status_pedido,p.nombre,p.precio,dv.cantidad,
+             dv.descuento,pe.comentario,u.nombre as nom,u.apaterno,u.amaterno,u.email,u.id_usuario
+      from 
+       
+      pedido pe join estado_pedido ep on ep.id_estado_pedido=pe.id_estado_pedido
+        join  detalle_pedido dv ON dv.id_pedido = pe.id_pedido
+           join producto p on p.id_producto=dv.id_producto
+            join usuario u on u.id_usuario=pe.id_usuario 
+          )as detalle 
+          where  id_estado_pedido=4           
+             group by id_producto
+     
+ ;");
+        $rs = $sisinfo->consulta_sql($sql);
+        $arreglo = $rs->GetArray();
+        return $arreglo;
+    }
+
     function consulta_pedidos_activos() {
         $sisinfo = new Modelo();
         $sql = ("SELECT id_pedido,id_estado_pedido,
@@ -107,10 +179,6 @@ from
         $arreglo = $rs->GetArray();
         return $arreglo;
     }
-    
-    
-    
-    
 
     function actualiza_producto($status, $id_producto) {
         $sisinfo = new Modelo();
@@ -118,18 +186,18 @@ from
                 . $status . "' WHERE  `producto`.`id_producto` =" . $id_producto . ";");
         $sisinfo->consulta_sql($sql);
     }
-    
+
     function actualiza_pedido_estatus($status, $id_pedido) {
         $sisinfo = new Modelo();
         $sql = ("UPDATE  `pedido` SET  `id_estado_pedido` =  '"
                 . $status . "' WHERE  `pedido`.`id_pedido` =" . $id_pedido . ";");
         $sisinfo->consulta_sql($sql);
     }
-    
-      function lista_productos($id_pedido) {
+
+    function lista_productos($id_pedido) {
         $sisinfo = new Modelo();
-        $sql = ("SELECT pr.nombre,dp.cantidad FROM detalle_pedido dp join producto pr on pr.id_producto=dp.id_producto where dp.id_pedido=".$id_pedido.";");
-       
+        $sql = ("SELECT pr.nombre,dp.cantidad FROM detalle_pedido dp join producto pr on pr.id_producto=dp.id_producto where dp.id_pedido=" . $id_pedido . ";");
+
         $rs = $sisinfo->consulta_sql($sql);
         $arreglo = $rs->GetArray();
         return $arreglo;

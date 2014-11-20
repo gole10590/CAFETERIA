@@ -14,7 +14,7 @@ include ('../../controllers/adminController/siteController.php');
 include '../layouts/header.php';
 
 $admin = new siteController();
-$rentas = $admin->consulta_productos();
+$rentas = $admin->consulta_prod_menos_vendidos();
 ?>
 
 <div class="col-lg-12" >
@@ -33,8 +33,8 @@ $rentas = $admin->consulta_productos();
         <div class="list-group">    
             <a href="<?php echo BASEURL . "views/admin/inicio.php" ?>" class="list-group-item">Menu</a>
             <a href="<?php echo BASEURL . "views/admin/total_ventas.php" ?>" class="list-group-item">Total de ventas/Producto</a>
-            <a href="<?php echo BASEURL . "views/admin/productos_vendidos.php" ?>" class="list-group-item ">Productos vendidos</a>
-            
+            <a href="<?php echo BASEURL . "views/admin/productos_vendidos.php" ?>" class="list-group-item ">Productos mas vendidos</a>
+
         </div>
         <!-- Termina Menu de Opciones -->
     </div>
@@ -43,7 +43,7 @@ $rentas = $admin->consulta_productos();
 
 
         <div class="page-header panel panel-default">            
-            <div class="modal-content"><center><h2>Productos jamas vendidos</h2></center></div>
+            <div class="modal-content"><center><h2>Productos menos vendidos</h2></center></div>
             <div class="panel-body">
                 <legend>
                     <p>
@@ -52,7 +52,7 @@ $rentas = $admin->consulta_productos();
                             <?php
                             $file = fopen("./Archivos_config/estadisticas_3.txt", "r");
                             while (!feof($file)) {
-                                echo fgets($file) . "<br />";
+                            echo fgets($file) . "<br />";
                             }
                             fclose($file);
                             ?>
@@ -65,22 +65,23 @@ $rentas = $admin->consulta_productos();
             <table class="table table-striped " id="example">
                 <thead>
                     <tr>
-
-
-
+                        <th>Nombre Producto</th>
+                        <th>Cantidad vendido</th>
 
                     </tr>
                 </thead>
 
                 <tbody>
-
+                    <?php foreach ($rentas as $key => $value) : $id_pro = $rentas[$key]["id_producto"]
+                    ?>
                     <tr>
-
+                       <td><?php echo $rentas[$key]['nombre'] ?></td>
+                       <td><?php echo $rentas[$key]['cantidad'] ?></td>
 
                     </tr>
 
 
-
+                  <?php endforeach; ?> 
                 </tbody>
             </table>
 

@@ -14,7 +14,7 @@ include ('../../controllers/adminController/siteController.php');
 include '../layouts/header.php';
 
 $admin = new siteController();
-$rentas = $admin->consulta_productos();
+$rentas = $admin->consulta_total_ventas();
 ?>
 
 <div class="col-lg-12" >
@@ -32,8 +32,8 @@ $rentas = $admin->consulta_productos();
         <!-- Menu de Opciones -->
         <div class="list-group">    
             <a href="<?php echo BASEURL . "views/admin/inicio.php" ?>" class="list-group-item">Menu</a>
-            <a href="<?php echo BASEURL . "views/admin/productos_vendidos.php" ?>" class="list-group-item ">Productos vendidos</a>
-            <a href="<?php echo BASEURL . "views/admin/productos_no_vendidos.php" ?>" class="list-group-item ">Productos jamas vendidos</a>
+            <a href="<?php echo BASEURL . "views/admin/productos_vendidos.php" ?>" class="list-group-item ">Productos mas vendidos</a>
+            <a href="<?php echo BASEURL . "views/admin/productos_no_vendidos.php" ?>" class="list-group-item ">Productos menos vendidos</a>
 
         </div>
         <!-- Termina Menu de Opciones -->
@@ -65,7 +65,10 @@ $rentas = $admin->consulta_productos();
             <table class="table table-striped " id="example">
                 <thead>
                     <tr>
-
+                        <th>Nombre Producto</th>
+                        <th>Cantidad vendido</th>
+                        <th>Total de ventas</th>
+                       
 
 
 
@@ -73,14 +76,17 @@ $rentas = $admin->consulta_productos();
                 </thead>
 
                 <tbody>
-
+                     <?php foreach ($rentas as $key => $value) : $id_pro = $rentas[$key]["id_producto"]
+                        ?>
                     <tr>
-
+                       <td><?php echo $rentas[$key]['nombre'] ?></td>
+                        <td><?php echo $rentas[$key]['cantidad'] ?></td>
+                         <td><?php echo "$".$rentas[$key]['total'] ?></td>
 
                     </tr>
 
 
-
+                 <?php endforeach; ?> 
                 </tbody>
             </table>
 
