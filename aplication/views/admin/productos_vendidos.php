@@ -33,7 +33,6 @@ $rentas = $admin->consulta_productos();
         <div class="list-group">    
             <a href="<?php echo BASEURL . "views/admin/inicio.php" ?>" class="list-group-item">Menu</a>
             <a href="<?php echo BASEURL . "views/admin/total_ventas.php" ?>" class="list-group-item">Total de ventas/Producto</a>
-            <a href="<?php echo BASEURL . "views/admin/productos_vendidos.php" ?>" class="list-group-item ">Productos vendidos</a>
             <a href="<?php echo BASEURL . "views/admin/productos_no_vendidos.php" ?>" class="list-group-item ">Productos jamas vendidos</a>
 
         </div>
@@ -44,14 +43,14 @@ $rentas = $admin->consulta_productos();
 
 
         <div class="page-header panel panel-default">            
-            <div class="modal-content"><center><h2>Estadistica de Venta</h2></center></div>
+            <div class="modal-content"><center><h2>Productos mas vendidos</h2></center></div>
             <div class="panel-body">
                 <legend>
                     <p>
                     <h4 class="modal-open" >
                         <center>
                             <?php
-                            $file = fopen("./Archivos_config/estadisticas.txt", "r");
+                            $file = fopen("./Archivos_config/estadisticas_2.txt", "r");
                             while (!feof($file)) {
                                 echo fgets($file) . "<br />";
                             }
