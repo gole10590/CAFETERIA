@@ -32,8 +32,9 @@ $rentas = $admin->consulta_productos();
         <!-- Menu de Opciones -->
         <div class="list-group">    
             <a href="<?php echo BASEURL . "views/admin/inicio.php" ?>" class="list-group-item">Menu</a>
-            <a href="<?php echo BASEURL . "views/admin/.php" ?>" class="list-group-item">Total de ventas</a>
-            <a href="<?php echo BASEURL . "views/admin/.php" ?>" class="list-group-item active">Productos vendidos</a>
+            <a href="<?php echo BASEURL . "views/admin/.php" ?>" class="list-group-item">Total de ventas/Producto</a>
+            <a href="<?php echo BASEURL . "views/admin/.php" ?>" class="list-group-item ">Productos vendidos</a>
+            <a href="<?php echo BASEURL . "views/admin/.php" ?>" class="list-group-item ">Productos jamas vendidos</a>
 
         </div>
         <!-- Termina Menu de Opciones -->

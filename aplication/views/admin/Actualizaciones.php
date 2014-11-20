@@ -22,7 +22,12 @@ if ($identificador == "ActStatus") {
     if ($identificador == "EliminaProd") {
 
         $id_producto = $_GET["p"];
-        $admin->elimina_producto($id_producto);
+        $resultado=$admin->elimina_producto($id_producto);
+        
+        if($resultado==FALSE)
+        {
+            die( ' EL PRODUCTO SE ENCUENTRA EN EL PEDIDO DE POR LO MENOS UN USUARIO, NO ES POSIBLE ELIMINARLO');
+        }
         header("Location: " . BASEURL . "views/admin/Productos.php");
     } else {
         if ($identificador == "ActEdoUser") {

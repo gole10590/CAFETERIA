@@ -41,8 +41,10 @@ class Modelo extends Conexion {
     // Funcion para Detectar cualquier error en algun tipo de consulta
 
     public function get_error($result, $tipo_error) {
-        if ($result === false) {
-            die('---> ' . $tipo_error . ' <---');
+        if ($result === false) 
+         {
+//            die ('---> ' . $tipo_error . ' <---');
+            echo  ('---> ' . $tipo_error . ' <---');
             return false;
         } else {
             return true;

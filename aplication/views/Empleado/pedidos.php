@@ -62,19 +62,19 @@ $rentas = $admin->consulta_pedidos_activos();
 
                 </legend>
             </div>
-            <table class="table table-striped " id="example">
+            <table class="table" id="example">
                 <thead>
                     <tr>
-                        <th> <h6 class="modal-open" >¿PREPARAR PEDIDO?</h6></th>
-                        <th><h6 class="modal-open" >Lista de productos</h6></th>
-                        <th><h6 class="modal-open" >COMENTARIO</h6></th>
-                        <th><h6 class="modal-open" >STATUS</h6></th>
-                        <th><h6 class="modal-open" >Total</h6></th>
-                        <th><h6 class="modal-open" >ID_PEDIDO</h6></th>
+                        <th> <h5 class="modal-title" >¿PREPARAR PEDIDO?</h5></th>
+                        <th><h5 class="modal-title" >Lista de productos</h5></th>
+                        <th><h5 class="modal-title" >COMENTARIO</h5></th>
+                        <th><h5 class="modal-title" >STATUS</h5></th>
+                        <th><h5 class="modal-title" >Total</h5></th>
+                        <th><h5 class="modal-title" >ID_PEDIDO</h5></th>
 
-                        <th><center><h6 class="modal-open" >¿Listo?</h6></center></th>
-                <th><center><h6 class="modal-open" >¿Pagar?</h6></center></th>
-                <th><center><h6 class="modal-open" >¿Cancelar?</h6></center></th>
+                        <th><center><h5 class="modal-title" >¿Listo?</h5></center></th>
+                <th><center><h5 class="modal-title" >¿Pagar?</h5></center></th>
+                <th><center><h5 class="modal-title" >¿Cancelar?</h5></center></th>
                 </tr>
                 </thead>
 
@@ -93,15 +93,15 @@ $rentas = $admin->consulta_pedidos_activos();
                             </td>
 
                             <td>  
-                               
+                                <h6 class="modal-open" >  
                                 <?php $lista = $admin2->lista_productos($id_pro) ?>  
                                 <?php
                                 foreach ($lista as $elemento) {
-                                    echo $elemento['cantidad'] ."-".$elemento['nombre'].'</br>';
+                                    echo $elemento['cantidad'] ."  ".$elemento['nombre'].'</br></br>';
                                 }
                                 ?>
                              
-
+                                </h6>
                             </td>
                             <td>  
                                  <h6 class="modal-open" > 

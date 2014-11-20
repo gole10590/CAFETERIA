@@ -30,6 +30,7 @@ class RegistroController extends Usuario{
             $this->set_foto_perfil('user.jpg');
             $this->set_telefono($valores['telefono']);
             $this->set_id_tipo($valores['id_tipo']);
+            $this->set_id_estado('1');
            
             
             if(count($this->errores) > 0 )

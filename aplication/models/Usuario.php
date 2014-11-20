@@ -21,7 +21,7 @@ Class Usuario extends Modelo{
         'password' => array(),
         'foto_perfil' => array(),
         'id_tipo' => array(),
-        'id_tipo'=> array(),
+        'id_estado'=> array(),
         
     );
     
