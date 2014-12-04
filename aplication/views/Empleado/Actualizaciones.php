@@ -22,8 +22,22 @@ if ($identificador == "ActStatus")
 
     $status = $_GET["stt"];
     $id_pedido = $_GET["p"];
-    $admin->actualiza_pedido_estatus($status, $id_pedido);
-    header("Location: " . BASEURL . "views/Empleado/pedidos.php");
+    
+    $STATUS=$admin->status_pedido($id_pedido);
+            if($STATUS[0][0]==1)
+            {
+              $admin->actualiza_pedido_estatus($status, $id_pedido);
+    
+    
+               header("Location: " . BASEURL . "views/Empleado/pedidos.php");
+            }
+            else
+            { 
+              
+               echo 'Lo sentimos pero este pedido ya fue cancelado..........'; 
+            }
+    
+    
 }
 if ($identificador == "email") 
  {
