@@ -33,7 +33,97 @@ $rentas = $admin->consulta_productosClient();
         <!-- Menu de Opciones -->
         <div class="list-group">    
             <a href="<?php echo BASEURL . "views/Client/inicio.php" ?>" class="list-group-item">Menu</a>
+             
+            
+            <div class="table">            
+            <div class="panel-heading"><center><h2>Pedidos Pendientes</h2></center></div>
+            <?php $Pedidos = $admin->consulta_pedidos_pendientes($_SESSION['id_usuario']); ?>
+            
+            <table class="tag" id="example">
+                <thead>
+                    <tr>
+                        <th>Pedido</th>
+                         <th>Estatus</th>
+                         <th>Accion</th>
+                        
+                    </tr>
+                </thead>
 
+                <tbody>
+                    <?php foreach ($Pedidos as $key => $value) : $id_pro = $Pedidos[$key]["id_pedido"]
+                        ?>
+                        <tr>
+                             <td><?php echo $Pedidos[$key]['id_pedido'] ?></td>
+                             <td><?php echo $Pedidos[$key]['status_pedido'] ?></td>
+                            <td>
+                                
+                                <?php $status = $Pedidos[$key]["id_estado_pedido"]; ?>
+                                <?php if ($status == 1) : ?>
+                                <a type="button" class="btn btn-danger btn-mini" data-toggle="modal" data-target="#<?php echo $Pedidos[$key]["id_pedido"] ?>" >Cancelar</a>
+                                  <?php
+                                endif;
+                                ?>
+                                
+                                <?php $status = $Pedidos[$key]["id_estado_pedido"]; ?>
+                                <?php if ($status == 2 || $status == 3) : ?>
+                                <a type="button" class="btn btn-success btn-mini" data-toggle="modal" data-target="#<?php echo $Pedidos[$key]["id_pedido"] ?>" >Verificar</a>
+                                  <?php
+                                endif;
+                                ?>
+                                
+                            </td>
+                           
+                           
+                           
+                        </tr>
+
+
+
+
+
+                        <!-- Cancelar pedido -->
+                    <div class="modal fade" id="<?php echo $Pedidos[$key]["id_pedido"] ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <center>
+                                        <h3 class="modal-title" id="myModalLabel"><?php echo "¿Está seguro que desea eliminar su pedido?" ?></h3>
+                                    </center>
+                                </div>
+                                <div class="modal-content">                                          
+                                    <div class="col-lg-3">
+                                        <img class="fotoComida" src="<?php echo BASEURL . "views/img/comida/" . $rentas[$key]["imagen"] ?>" />                                              
+                                    </div>
+                                    <div class="col-lg-9">
+                                        <h3 class="modal-body" id="myModalLabel">  <?php echo $rentas[$key]["descripcion"] ?><br/><br/> </h3> 
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer">
+
+                                   
+                                    <button data-toggle="tooltip" title="Cancelar" type="button" class="btn btn-danger btn-mini" data-dismiss="modal">Volver Atras</button>
+                                    <a data-toggle="tooltip" title="Agregar al pedido" href="<?php echo "Add_product_pedido.php?id=AddProd&nombre=".$_SESSION['id_usuario']."&cantidad=8&p=" . $id_pro ?>" type="button" class="btn btn-success btn-mini">Cancelar pedido</a>
+
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
+
+                    
+
+                <?php endforeach; ?> 
+
+                </tbody>
+                <tfoot>
+
+                </tfoot>
+
+            </table>
+
+
+        </div>
         </div>
         <!-- Termina Menu de Opciones -->
     </div>
@@ -94,7 +184,7 @@ $rentas = $admin->consulta_productosClient();
 
 
 
-                        <!-- Modal -->
+                        <!-- Modal Agregar producto al carrito -->
                     <div class="modal fade" id="<?php echo $rentas[$key]["id_producto"] ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -142,14 +232,44 @@ $rentas = $admin->consulta_productosClient();
                         </div><!-- /.modal-dialog -->
                     </div><!-- /.modal -->
 
+                    
+                    
+                    
+                        <!-- Modal Generar Pedido-->
+                    <div class="modal fade" id="<?php echo $rentas[$key]["id_producto"].$rentas[$key]["nombre"] ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <center>
+                                        <h3 class="modal-title" id="myModalLabel"><?php echo "¿Está seguro que desea generar su  pedido?" ?></h3>
+                                    </center>
+                                </div>
+                                <div class="modal-content">                                          
+                                    <div class="col-lg-3">
+                                        <img class="fotoComida" src="<?php echo BASEURL . "views/img/comida/" . $rentas[$key]["imagen"] ?>" />                                              
+                                    </div>
+                                    <div class="col-lg-9">
+                                        <h3 class="modal-body" id="myModalLabel">  <?php echo $rentas[$key]["descripcion"] ?><br/><br/> </h3> 
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer">
+
+                                    <button data-toggle="tooltip" title="Cancelar" type="button" class="btn btn-danger btn-mini" data-dismiss="modal">Cancelar</button>
+                                    <a data-toggle="tooltip" title="Generar Pedido"  href="<?php echo "Add_product_pedido.php?&nombre=".$_SESSION['id_usuario']."&id=Insert&p=" . $id_pro ?>" type="button" class="btn btn-success btn-mini">Generar Pedido</a>
+
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
 
                 <?php endforeach; ?> 
 
                 </tbody>
                 <tfoot>
 
-
-                <a data-toggle="tooltip" title="Agregar al pedido"  href="<?php echo "Add_product_pedido.php?&nombre=".$_SESSION['id_usuario']."&id=Insert&p=" . $id_pro ?>" type="button" class="btn btn-primary btn-mini">Generar Pedido</a>
+                <a type="button" class="btn btn-primary btn-mini"  data-toggle="modal" data-target="#<?php echo $rentas[$key]["id_producto"].$rentas[$key]["nombre"] ?>" >Generar Pedido</a>
 
                 </tfoot>
 

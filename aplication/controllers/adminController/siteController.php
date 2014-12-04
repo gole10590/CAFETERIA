@@ -57,6 +57,15 @@ Class siteController {
         $arreglo = $rs->GetArray();
         return $arreglo;
     }
+    
+    
+    function consulta_pedidos_pendientes($id_usuario) {
+        $sisinfo = new Modelo();
+        $sql = ("SELECT id_pedido,p.id_estado_pedido,status_pedido FROM pedido p join estado_pedido ep on ep.id_estado_pedido=p.id_estado_pedido where id_usuario='".$id_usuario."' and p.id_estado_pedido<4  ;" );
+        $rs = $sisinfo->consulta_sql($sql);
+        $arreglo = $rs->GetArray();
+        return $arreglo;
+    }
 
     function consulta_all_usuarios($id_admin) {
         $sisinfo = new Modelo();
