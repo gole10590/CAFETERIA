@@ -18,21 +18,58 @@ $identificador = $_GET["id"];
 
 if ($identificador == "AddProd") {
     $id_producto = $_GET["p"];
-
-    $file = fopen("./Archivos_config/archivo_temp.txt", "a");
-    fwrite($file, $id_producto . PHP_EOL);
+    $cantidad = $_GET["cantidad"];
+    $nombre = $_GET["nombre"];
+    $file = fopen("./Archivos_config/" . $nombre . ".txt", "a");
+    fwrite($file, $id_producto . "  " . $cantidad . PHP_EOL);
     fclose($file);
     header("Location: " . BASEURL . "views/Client/Productos.php");
 } else {
 
     if ($identificador == "Insert") {
-        $file = fopen("./Archivos_config/archivo_temp.txt", "w");
+        $nombre = $_GET["nombre"];
+        $fecha = strftime("%Y-%m-%d %H-%M-%S", time());
+        $desccuento = 0;
+        $comentario = "hola mundo";
+        $admin->inserta_pedido($fecha, $nombre, $comentario);
+
+        $pedido = $admin->consulta_pedido($fecha);
+        $id_pedido = $pedido[0][0];
+
+
+        if (file_exists("./Archivos_config/" . $nombre . ".txt")) {
+           
+        $file = fopen("./Archivos_config/" . $nombre . ".txt", "r");
+        while (!feof($file)) {
+            $linea = fgets($file);
+//            echo $linea . "<br />";
+//             
+            if ($linea != "") {
+                $tok = strtok($linea, " ");
+                $id_producto = $tok;
+                echo "id_producto=$id_producto<br />";
+                while ($tok !== false) {
+                    $tok = strtok(" ");
+                    if ($tok !== false) {
+                        $cantidad = $tok;
+                    }
+                }
+
+//             echo "cantidad=$cantidad<br />"; 
+
+                $admin->inserta_detalle_pedido($id_pedido, $id_producto, $cantidad, $desccuento);
+            }
+        }
 
         fclose($file);
+        unlink("./Archivos_config/" . $nombre . ".txt");
         header("Location: " . BASEURL . "views/Client/Productos.php");
-    
-} else {
-echo 'No se cargaron datos de productos';
-}
+        } else {
+            echo "AUN NO SE HAN CARGADO PRODUCTOS AL PEDIDO, FAVOR DE AGREGAR POR LO MENOS UN PRODUCTO.";
+        }
+
+    } else {
+        echo 'No se cargaron datos de productos';
+    }
 }
 ?>

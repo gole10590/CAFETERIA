@@ -78,7 +78,6 @@ $rentas = $admin->consulta_productosClient();
                         ?>
                         <tr>
                             <td>
-                                <!--<a data-toggle="tooltip" title="Eliminar producto de BD" href="<?php echo "Actualizaciones.php?id=EliminaProd&p=" . $id_pro ?>" type="button" class="btn btn-danger btn-mini">Eliminar</a>-->
                                 <a type="button" class="btn btn-success btn-mini" data-toggle="modal" data-target="#<?php echo $rentas[$key]["id_producto"] ?>" >Agregar al pedido</a>
 
                             </td>
@@ -118,7 +117,7 @@ $rentas = $admin->consulta_productosClient();
 
                                     <h3 class="modal-footer" id="myModalLabel"><?php echo "Cantidad de productos:" ?>
 
-                                        <select class="modal-content" id="myModalLabel" name="cantida_prod">
+                                        <select class="modal-content" id="cantidad"  name="cantida_prod">
                                             <option value="1" selected="selected">1</option>
                                             <option value="2">2</option>
                                             <option value="3">3</option>
@@ -134,9 +133,9 @@ $rentas = $admin->consulta_productosClient();
                                     </h3>
 
 
-
+                                  
                                     <button data-toggle="tooltip" title="Cancelar" type="button" class="btn btn-danger btn-mini" data-dismiss="modal">Cancelar</button>
-                                    <a data-toggle="tooltip" title="Agregar al pedido" href="<?php echo "Add_product_pedido.php?id=AddProd&p=" . $id_pro ?>" type="button" class="btn btn-success btn-mini">Agregar</a>
+                                    <a data-toggle="tooltip" title="Agregar al pedido" href="<?php echo "Add_product_pedido.php?id=AddProd&nombre=".$_SESSION['id_usuario']."&cantidad=8&p=" . $id_pro ?>" type="button" class="btn btn-success btn-mini">Agregar</a>
 
                                 </div>
                             </div><!-- /.modal-content -->
@@ -150,7 +149,7 @@ $rentas = $admin->consulta_productosClient();
                 <tfoot>
 
 
-                <a data-toggle="tooltip" title="Agregar al pedido"  href="<?php echo "Add_product_pedido.php?id=Insert&p=" . $id_pro ?>" type="button" class="btn btn-primary btn-mini">Generar Pedido</a>
+                <a data-toggle="tooltip" title="Agregar al pedido"  href="<?php echo "Add_product_pedido.php?&nombre=".$_SESSION['id_usuario']."&id=Insert&p=" . $id_pro ?>" type="button" class="btn btn-primary btn-mini">Generar Pedido</a>
 
                 </tfoot>
 

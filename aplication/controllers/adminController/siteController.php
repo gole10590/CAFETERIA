@@ -18,6 +18,13 @@ Class siteController {
         $arreglo = $rs->GetArray();
         return $arreglo;
     }
+     function consulta_pedido($fecha) {
+        $sisinfo = new Modelo();
+        $sql = ("SELECT id_pedido FROM pedido where fecha='".$fecha."';");
+        $rs = $sisinfo->consulta_sql($sql);
+        $arreglo = $rs->GetArray();
+        return $arreglo;
+    }
 
     function consulta_estado_usuario($id_usuario) {
         $sisinfo = new Modelo();
@@ -207,6 +214,18 @@ from
         $sisinfo = new Modelo();
         $sql = ("UPDATE  `usuario` SET  `id_estado` =  '"
                 . $estado . "' WHERE  `usuario`.`id_usuario` =" . $id_usuario . ";");
+        $sisinfo->consulta_sql($sql);
+    }
+    
+    function inserta_pedido($fecha,$id_usuario,$comentario) {
+        $sisinfo = new Modelo();
+        $sql = ("insert into pedido (fecha,id_usuario,comentario,id_estado_pedido) values ('".$fecha."','".$id_usuario."','".$comentario."',1);");
+        $sisinfo->consulta_sql($sql);
+    }
+    
+    function inserta_detalle_pedido($id_pedido,$id_producto,$cantidad,$descuento) {
+        $sisinfo = new Modelo();
+        $sql = ("insert into detalle_pedido (id_pedido,id_producto,cantidad,descuento) values (".$id_pedido.",".$id_producto.",".$cantidad.",".$descuento.");");
         $sisinfo->consulta_sql($sql);
     }
 

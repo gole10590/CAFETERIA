@@ -79,7 +79,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/CAFETERIA/aplication/config.ini.php';
         ?>
                
           
-                    <meta http-equiv="refresh" content="10" >
+                    <meta http-equiv="refresh" content="90" >
 
                     <div class="container" id="page">
                         <!-- NavBar -->
