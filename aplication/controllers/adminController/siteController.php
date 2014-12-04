@@ -206,11 +206,11 @@ from
 
     function consulta_pedidos_activos() {
         $sisinfo = new Modelo();
-        $sql = ("SELECT id_pedido,id_estado_pedido,
+        $sql = ("SELECT id_pedido,id_estado_pedido,foto_perfil,
           status_pedido,comentario,nom,apaterno,amaterno,id_usuario,email, SUM( (precio * cantidad) - DESCUENTO ) AS total
 
 from
-(select pe.id_pedido,pe.id_estado_pedido,
+(select pe.id_pedido,pe.id_estado_pedido,u.foto_perfil,
           ep.status_pedido,p.nombre,p.precio,dv.cantidad,
              dv.descuento,pe.comentario,u.nombre as nom,u.apaterno,u.amaterno,u.email,u.id_usuario
       from 

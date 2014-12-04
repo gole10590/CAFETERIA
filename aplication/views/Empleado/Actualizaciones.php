@@ -17,44 +17,66 @@ $send_email = new RegistroController();
 $identificador = $_GET["id"];
 
 
-if ($identificador == "ActStatus") 
- {
+if ($identificador == "ActStatus") {
 
     $status = $_GET["stt"];
     $id_pedido = $_GET["p"];
-    
-    $STATUS=$admin->status_pedido($id_pedido);
-            if($STATUS[0][0]==1)
-            {
-              $admin->actualiza_pedido_estatus($status, $id_pedido);
-    
-    
-               header("Location: " . BASEURL . "views/Empleado/pedidos.php");
-            }
-            else
-            { 
-              
-               echo 'Lo sentimos pero este pedido ya fue cancelado..........'; 
-            }
-    
-    
+
+    $STATUS = $admin->status_pedido($id_pedido);
+    if ($STATUS[0][0] == 1) {
+        $admin->actualiza_pedido_estatus($status, $id_pedido);
+
+
+        header("Location: " . BASEURL . "views/Empleado/pedidos.php");
+    } else {
+        if ($STATUS[0][0] == 3) {
+            $admin->actualiza_pedido_estatus($status, $id_pedido);
+            header("Location: " . BASEURL . "views/Empleado/pedidos.php");
+        } else {
+            echo 'Lo sentimos pero este pedido ya fue cancelado..........';
+        }
+    }
 }
-if ($identificador == "email") 
- {
+if ($identificador == "email") {
 
     $status = $_GET["stt"];
-    $id_pedido = $_GET["p"];
-    $correo=$_GET["em"];
-     $id_pedido=$_GET["id_ped"];
-   
-    $asunto="SU PEDIDO ESTA LISTO";
-    $mensaje="SU PEDIDO YA ESTA LISTO PARA RECOGER.... \nNumero de pedido: ".$id_pedido;
+
+    $correo = $_GET["em"];
+    $id_pedido = $_GET["id_ped"];
+
+    $total=$_GET["total"];
+
+
+    $lista2 = $admin->lista_productos($id_pedido);
+
     
-   
-    $send_email->enviaMail($correo,$asunto,$mensaje);
+    foreach ($lista2 as $elemento) {
+
+        $PRODUCTOS =$PRODUCTOS."PRODUCTO: ".$elemento['nombre'] . ",  CANTIDAD DEL PRODUCTO = " . $elemento['cantidad'] . ",  Precio/Unitario: $" . $elemento['precio'] . '</br></br></br>';
+    }
+
+    $asunto = "SU PEDIDO ESTA LISTO";
+    $mensaje = "SU PEDIDO YA ESTA LISTO PARA RECOGER..." . '</br></br>' . "Numero de pedido: " . $id_pedido . '</br></br>' . "Lista de pedido : " . '</br></br>' .  $PRODUCTOS.'</br></br></br>'."TOTAL A PAGAR = $".$total;
+
+
+    $send_email->enviaMail($correo, $asunto, $mensaje);
     $admin->actualiza_pedido_estatus($status, $id_pedido);
     header("Location: " . BASEURL . "views/Empleado/pedidos.php");
 }
-  
 
+if ($identificador == "reemail") {
+
+
+    $id_pedido = $_GET["id_ped"];
+    $correo = $_GET["em"];
+
+
+    $asunto = "SU PEDIDO ESTA LISTO";
+    $mensaje = "YA SE LE HA MAS DE UNA NOTIFICACION DE QUE SU PEDIDO ESTA LISTO." . '</br></br>' . "SI NO PASA A RECOGER SU PEDIDO SU CUENTA PODRIA SER BLOQUEADA.... " . '</br></br>' . "Numero de pedido: " . $id_pedido;
+
+
+    $send_email->enviaMail($correo, $asunto, $mensaje);
+
+    header("Location: " . BASEURL . "views/Empleado/pedidos.php");
+}
 ?>

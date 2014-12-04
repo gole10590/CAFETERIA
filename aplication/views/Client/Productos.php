@@ -34,9 +34,9 @@ $rentas = $admin->consulta_productosClient();
         <div class="list-group">    
             <a href="<?php echo BASEURL . "views/Client/inicio.php" ?>" class="list-group-item">Menu</a>
 
-
+            <br/>
             <div class="table">            
-                <div class="panel-heading"><center><h2>Pedidos Pendientes</h2></center></div>
+                <div class="panel-heading"><center><h4>Pedidos Pendientes</h4></center></div>
                 <?php $Pedidos = $admin->consulta_pedidos_pendientes($_SESSION['id_usuario']); ?>
 
                 <table class="tag" id="example">
