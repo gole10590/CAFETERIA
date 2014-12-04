@@ -29,7 +29,13 @@
 <?php
 
 session_start();
+
+  if (file_exists("../Client/Archivos_config/" .$_SESSION['id_usuario']. ".txt")) {
+     unlink("../Client/Archivos_config/" .$_SESSION['id_usuario']. ".txt"); 
+  }
+ 
 unset($_SESSION);
+
 session_destroy();
 //header("location: Bienvenido.php");
 $id=$_GET["id"];

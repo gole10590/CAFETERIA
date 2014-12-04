@@ -76,6 +76,14 @@ Class siteController {
         $arreglo = $rs->GetArray();
         return $arreglo;
     }
+    
+     function cantidad_pedidos_usuario($id_usuario) {
+        $sisinfo = new Modelo();
+        $sql = (" select COUNT(id_pedido) from  pedido   where id_usuario=".$id_usuario." and id_estado_pedido<4");
+        $rs = $sisinfo->consulta_sql($sql);
+        $arreglo = $rs->GetArray();
+        return $arreglo;
+    }
 
     function consulta_all_usuarios_fraude() {
         $sisinfo = new Modelo();
@@ -96,7 +104,32 @@ WHERE ep.id_estado_pedido =5) as cancel group by id_usuario;" );
         $arreglo = $rs->GetArray();
         return $arreglo;
     }
+    
+    function status_pedido($id_pedido) {
+        $sisinfo = new Modelo();
+        $sql = ("SELECT id_estado_pedido FROM pedido where id_pedido=".$id_pedido." ;" );
+        $rs = $sisinfo->consulta_sql($sql);
+        $arreglo = $rs->GetArray();
+        return $arreglo;
+    }
+    
+    function total_pedido($id_pedido) {
+        $sisinfo = new Modelo();
+        $sql = (" SELECT  SUM( (precio * cantidad) - DESCUENTO ) AS total
 
+              from 
+                  detalle_pedido dv 
+                          join producto p on p.id_producto=dv.id_producto
+            
+                           where id_pedido=".$id_pedido.";" );
+        $rs = $sisinfo->consulta_sql($sql);
+        $arreglo = $rs->GetArray();
+        return $arreglo;
+    }
+
+    
+   
+    
     function consulta_prod_mas_vendidos() {
         $sisinfo = new Modelo();
         $sql = ("SELECT id_pedido,id_estado_pedido,id_producto,nombre,
@@ -212,7 +245,7 @@ from
 
     function lista_productos($id_pedido) {
         $sisinfo = new Modelo();
-        $sql = ("SELECT pr.nombre,dp.cantidad FROM detalle_pedido dp join producto pr on pr.id_producto=dp.id_producto where dp.id_pedido=" . $id_pedido . ";");
+        $sql = ("SELECT pr.nombre,dp.cantidad,pr.precio FROM detalle_pedido dp join producto pr on pr.id_producto=dp.id_producto where dp.id_pedido=" . $id_pedido . ";");
 
         $rs = $sisinfo->consulta_sql($sql);
         $arreglo = $rs->GetArray();
