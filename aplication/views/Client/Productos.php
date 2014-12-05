@@ -198,13 +198,19 @@ $rentas = $admin->consulta_productosClient();
             </div>
         </div>
         <!-- Termina Menu de Opciones -->
+         <!-- Termina Menu de Opciones -->
+          <!-- Termina Menu de Opciones -->
+           <!-- Termina Menu de Opciones -->
+        
+        
+        
     </div>
-    <!--REALIZAR ESTO CUANDO EL ALUMNO NO TENGA MAS DE 3 PEDIDOS PENDIENTES-->
+    <!--VERIFICAR QUE EL USUARIO NO TENGA MAS DE 3 PEDIDOS PENDIENTES-->
     <?php
     $CANTIDAD_PEDIDOS = $admin->cantidad_pedidos_usuario($_SESSION['id_usuario']);
     if ($CANTIDAD_PEDIDOS[0][0] < 3) {
         ?>
-
+<!--SI TIENE MENOS DE 3 PEDIDOS ENTONCES REALIZA LO SIGUIENTE-->
         <div class="col-lg-9">
 
 
@@ -250,7 +256,7 @@ $rentas = $admin->consulta_productosClient();
                                 ?>
                                 <tr>
                                     <td>
-
+<!--verificar si el id_producto ya se encuentra en el archivo asea en el carrito del pedido.-->
                                         <?php
                                         $bandera = FALSE;
                                         $file = fopen("./Archivos_config/" . $_SESSION['id_usuario'] . ".txt", "r");
@@ -371,7 +377,7 @@ $rentas = $admin->consulta_productosClient();
 
 
                                             <button data-toggle="tooltip" title="Cancelar" type="button" class="btn btn-danger btn-mini" data-dismiss="modal">Cancelar</button>
-                                            <a data-toggle="tooltip" title="Agregar al pedido" href="<?php echo "Add_product_pedido.php?id=AddProd&nombre=" . $_SESSION['id_usuario'] . "&cantidad=8&p=" . $id_pro ?>" type="button" class="btn btn-success btn-mini">Agregar</a>
+                                            <a data-toggle="tooltip" title="Agregar al pedido" href="<?php echo "Add_product_pedido.php?id=AddProd&nombre=" . $_SESSION['id_usuario'] . "&cantidad=1&p=" . $id_pro ?>" type="button" class="btn btn-success btn-mini">Agregar</a>
 
                                         </div>
                                     </div><!-- /.modal-content -->
@@ -427,7 +433,7 @@ $rentas = $admin->consulta_productosClient();
                         </tfoot>
 
                     </table>
-
+              <!--CIERRE DEL IF QUE-->
                 <?php } else { ?>
                     <table class="table table-striped " id="example">
                         <thead>
@@ -504,7 +510,7 @@ $rentas = $admin->consulta_productosClient();
 
 
                                             <button data-toggle="tooltip" title="Cancelar" type="button" class="btn btn-danger btn-mini" data-dismiss="modal">Cancelar</button>
-                                            <a data-toggle="tooltip" title="Agregar al pedido" href="<?php echo "Add_product_pedido.php?id=AddProd&nombre=" . $_SESSION['id_usuario'] . "&cantidad=8&p=" . $id_pro ?>" type="button" class="btn btn-success btn-mini">Agregar</a>
+                                            <a data-toggle="tooltip" title="Agregar al pedido" href="<?php echo "Add_product_pedido.php?id=AddProd&nombre=" . $_SESSION['id_usuario'] . "&cantidad=1&p=" . $id_pro ?>" type="button" class="btn btn-success btn-mini">Agregar</a>
 
                                         </div>
                                     </div><!-- /.modal-content -->
