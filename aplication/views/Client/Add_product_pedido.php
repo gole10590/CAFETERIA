@@ -30,7 +30,7 @@ if ($identificador == "AddProd") {
         $nombre = $_GET["nombre"];
         $fecha = strftime("%Y-%m-%d %H-%M-%S", time());
         $desccuento = 0;
-        $comentario = "hola mundo";
+        $comentario =  $_GET["coment"];;
         $admin->inserta_pedido($fecha, $nombre, $comentario);
 
         $pedido = $admin->consulta_pedido($fecha);
@@ -85,7 +85,57 @@ if ($identificador == "AddProd") {
             }
             
         } else {
-            echo 'No se cargaron datos de productos';
+            
+             if ($identificador == "QuiProd") {
+            
+                 $id_prod = $_GET["p"];
+                 $nombre = $_GET["nombre"];
+                    
+                 $file = fopen("./Archivos_config/" . $nombre . ".txt", "r+");
+                 $contador=0;
+            while (!feof($file)) {
+                 
+                $linea = fgets($file);
+//            echo $linea . "<br />";
+//             
+                if ($linea != "") {
+                    $tok = strtok($linea, " ");
+                    $id_producto = $tok;
+                    
+                    if($id_producto==$id_prod)
+                    {
+                       $file2 = fopen("./Archivos_config/" . $nombre . ".txt", "r+"); 
+                       for($i=0;$i<$contador;$i++)
+                       {
+                       fgets($file2);   
+                       }
+                        
+                       fwrite($file2, "" . "  " . "" .PHP_EOL); 
+                        fclose($file2);
+                    }
+                    
+                    while ($tok !== false) {
+                        $tok = strtok(" ");
+                        if ($tok !== false) {
+                            $cantidad = $tok;
+                        }
+                    }
+
+//             echo "cantidad=$cantidad<br />"; 
+                   
+                    
+                    
+                }
+                $contador++;
+            }
+
+            fclose($file);
+            header("Location: " . BASEURL . "views/Client/Productos.php");
+            
+        }else{
+           echo 'No se cargaron datos de productos'; 
+        }
+            
         }
     }
 }
