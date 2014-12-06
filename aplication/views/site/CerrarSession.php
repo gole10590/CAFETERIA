@@ -46,7 +46,7 @@ $id=$_GET["id"];
         {
             location.href = pagina
         }
-        setTimeout("redireccionar()", 3000);
+        setTimeout("redireccionar()", 500);
     </script>
 
     <script type="text/javascript">

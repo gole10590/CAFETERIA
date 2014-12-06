@@ -37,7 +37,7 @@ include ('../../controllers/siteController/Desconexion_usuario.php');
     
     <!-- Menu de Opciones -->
 <div class="list-group">
-    <a href="<?php echo BASEURL."views/Client/inicio.php" ?>" class="list-group-item active">Menu</a>
+    <a href="<?php echo BASEURL."views/Client/inicio.php" ?>" class="list-group-item ">Menu</a>
     <a href="<?php echo BASEURL."views/Client/Productos.php" ?>" class="list-group-item">Comprar Productos</a>
     
 </div>

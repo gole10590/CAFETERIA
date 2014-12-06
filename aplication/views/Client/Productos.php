@@ -282,7 +282,7 @@ $rentas = $admin->consulta_productosClient();
                                         fclose($file);
                                         ?>  
                                         <?php if ($bandera) { ?>
-                                            <a type="button" class="btn btn-warning btn-mini" data-toggle="modal" data-target="#<?php echo $rentas[$key]["id_producto"] . $_SESSION['nombre'] ?>" >Quitar del pedido</a>
+                                            <a type="button" class="btn btn-warning btn-mini" data-toggle="modal" data-target="#<?php echo $rentas[$key]["id_producto"] . $rentas[$key]["id_producto"] ?>" >Quitar del pedido</a>
 
                                         <?php } else { ?> 
                                             <a type="button" class="btn btn-success btn-mini" data-toggle="modal" data-target="#<?php echo $rentas[$key]["id_producto"] ?>" >Agregar al pedido</a>
@@ -293,7 +293,7 @@ $rentas = $admin->consulta_productosClient();
                                     <td><?php echo $rentas[$key]['nombre'] ?></td>
                                     <td><?php echo "$" . $rentas[$key]['precio'] . ".00" ?></td>
                                     <td><?php echo $rentas[$key]['descripcion'] ?></td>
-                                    <td><img data-toggle="tooltip"   class="fotoUsuario" src="../img/comida/<?php echo $rentas[$key]['imagen'] ?>" alt="user" class="img-thumbnail" ></a> </td>
+                                    <td><img data-toggle="modal"   class="fotoUsuario" data-target="#<?php echo $rentas[$key]["id_producto"].$rentas[$key]["nombre"] ?>" src="../img/comida/<?php echo $rentas[$key]['imagen'] ?>"  ></a> </td>
 
 
 
@@ -301,9 +301,29 @@ $rentas = $admin->consulta_productosClient();
 
 
 
+                                <!-- VIZUALIZAR IMAGEN MAS GRANDE -->
+                            <div class="modal fade" id="<?php echo $rentas[$key]["id_producto"] .$rentas[$key]["nombre"] ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                           
+                                        </div>
+                                        <div class="modal-content">                                          
+                                            <div class="col-lg-3">
+                                                <img width="560" height="500" src="<?php echo BASEURL . "views/img/comida/" . $rentas[$key]["imagen"] ?>" />                                              
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="modal-footer">
+
+                                        </div>
+                                    </div><!-- /.modal-content -->
+                                </div><!-- /.modal-dialog -->
+                            </div><!-- /.modal -->
 
                                 <!-- Modal QUITAR PRODUCTO DEL PEDIDO -->
-                            <div class="modal fade" id="<?php echo $rentas[$key]["id_producto"] . $_SESSION['nombre'] ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="<?php echo $rentas[$key]["id_producto"] .$rentas[$key]["id_producto"] ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -388,7 +408,7 @@ $rentas = $admin->consulta_productosClient();
 
 
                             <!-- Modal Generar Pedido-->
-                            <div class="modal fade" id="<?php echo $rentas[$key]["id_producto"] . $rentas[$key]["nombre"] ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="<?php echo $rentas[$key]["id_producto"] . "G" ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -417,6 +437,27 @@ $rentas = $admin->consulta_productosClient();
                                 </div><!-- /.modal-dialog -->
                             </div><!-- /.modal -->
 
+                             <!-- Modal Generar Pedido-->
+                            <div class="modal fade" id="<?php echo $rentas[$key]["id_producto"] . "C" ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <center>
+                                                <h3 class="modal-title" id="myModalLabel"><?php echo "¿Está seguro que desea CANCELAR su  pedido?" ?></h3>
+                                            </center>
+                                        </div>
+                                       
+                                        <div class="modal-footer">
+
+                                            <button data-toggle="tooltip" title="Volver atras" type="button" class="btn btn-success btn-mini" data-dismiss="modal">Volver atras</button>
+                                            <a data-toggle="tooltip" title="Generar Pedido"  href="<?php echo "Add_product_pedido.php?&id=borrar&nombre=" .$_SESSION['id_usuario'] ?>" type="button" class="btn btn-danger btn-mini">Cancelar Pedido</a>
+
+                                        </div>
+                                    </div><!-- /.modal-content -->
+                                </div><!-- /.modal-dialog -->
+                            </div><!-- /.modal -->
+
                         <?php endforeach; ?> 
 
                         </tbody>
@@ -426,7 +467,9 @@ $rentas = $admin->consulta_productosClient();
                                 <!--si el archivo existe hay que verificar que no este vacio-->
 
 
-                            <a type = "button" class = "btn btn-primary btn-mini" data-toggle = "modal" data-target = "#<?php echo $rentas[$key]["id_producto"] . $rentas[$key]["nombre"] ?>" >Generar Pedido</a>
+                            <a type = "button" class = "btn btn-primary btn-mini" data-toggle = "modal" data-target = "#<?php echo $rentas[$key]["id_producto"] . "G" ?>" >Generar Pedido</a>
+                            
+                            <a type = "button" class = "btn btn-danger btn-mini" data-toggle = "modal" data-target = "#<?php echo $rentas[$key]["id_producto"] . "C" ?>" >Cancelar Pedido</a>
 
                         <?php } ?>
 
@@ -459,13 +502,32 @@ $rentas = $admin->consulta_productosClient();
                                     <td><?php echo $rentas[$key]['nombre'] ?></td>
                                     <td><?php echo "$" . $rentas[$key]['precio'] . ".00" ?></td>
                                     <td><?php echo $rentas[$key]['descripcion'] ?></td>
-                                    <td><img data-toggle="tooltip"  class="fotoUsuario" src="../img/comida/<?php echo $rentas[$key]['imagen'] ?>" alt="user" class="img-thumbnail" ></a> </td>
+                                    <td><img data-toggle="modal" data-target="#<?php echo $rentas[$key]["id_producto"].$rentas[$key]["nombre"] ?>" class="fotoUsuario" src="../img/comida/<?php echo $rentas[$key]['imagen'] ?>"  ></a> </td>
 
 
 
                                 </tr>
 
+    <!-- VIZUALIZAR IMAGEN MAS GRANDE -->
+                            <div class="modal fade" id="<?php echo $rentas[$key]["id_producto"] .$rentas[$key]["nombre"] ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                           
+                                        </div>
+                                        <div class="modal-content">                                          
+                                            <div class="col-lg-3">
+                                                <img width="560" height="500" src="<?php echo BASEURL . "views/img/comida/" . $rentas[$key]["imagen"] ?>" />                                              
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="modal-footer">
 
+                                        </div>
+                                    </div><!-- /.modal-content -->
+                                </div><!-- /.modal-dialog -->
+                            </div><!-- /.modal -->
 
 
 
@@ -520,8 +582,8 @@ $rentas = $admin->consulta_productosClient();
 
 
 
-                            <!-- Modal Generar Pedido-->
-                            <div class="modal fade" id="<?php echo $rentas[$key]["id_producto"] . $rentas[$key]["nombre"] ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<!--                             Modal Generar Pedido
+                            <div class="modal fade" id="<?php echo $rentas[$key]["id_producto"] ."G" ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -546,20 +608,20 @@ $rentas = $admin->consulta_productosClient();
                                             <a data-toggle="tooltip" title="Generar Pedido"  href="<?php echo "Add_product_pedido.php?&coment=sin comentarios&nombre=" . $_SESSION['id_usuario'] . "&id=Insert&p=" . $id_pro ?>" type="button" class="btn btn-success btn-mini">Generar Pedido</a>
 
                                         </div>
-                                    </div><!-- /.modal-content -->
-                                </div><!-- /.modal-dialog -->
-                            </div><!-- /.modal -->
+                                    </div> /.modal-content 
+                                </div> /.modal-dialog 
+                            </div> /.modal -->
 
                         <?php endforeach; ?> 
 
                         </tbody>
-                        <tfoot>
+<!--                        <tfoot>
 
                             <?php if (file_exists("./Archivos_config/" . $_SESSION['id_usuario'] . ".txt")) { ?>
-                            <a type = "button" class = "btn btn-primary btn-mini" data-toggle = "modal" data-target = "#<?php echo $rentas[$key]["id_producto"] . $rentas[$key]["nombre"] ?>" >Generar Pedido</a>
+                            <a type = "button" class = "btn btn-primary btn-mini" data-toggle = "modal" data-target = "#<?php echo $rentas[$key]["id_producto"] ."G" ?>" >Generar Pedido</a>
                         <?php } ?>
 
-                        </tfoot>
+                        </tfoot>-->
 
                     </table>
                 <?php } ?>

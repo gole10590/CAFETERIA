@@ -35,6 +35,80 @@ $rentas = $admin->consulta_pedidos_activos();
             <a href="<?php echo BASEURL . "views/Empleado/inicio.php" ?>" class="list-group-item">Inicio</a>
 
         </div>
+        
+        <br/>
+            <div class="table">            
+                <div class="panel-heading"><center><h4>Pedidos Listos</h4></center></div>
+                <?php $Pedidos = $admin->consulta_pedidos_listos(); ?>
+
+                <table class="tag" id="example">
+                    <thead>
+                        <tr>
+                            <th>Pedido</th>
+                            
+                            <th>Enviar Email</th>
+
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <?php foreach ($Pedidos as $key => $value) : $id_ped = $Pedidos[$key]["id_pedido"]
+                            ?>
+                            <tr>
+                                <td><?php echo $Pedidos[$key]['id_pedido'] ?></td>
+                                <td>
+
+                                    <a type="button" class="btn btn-success btn-mini" data-toggle="modal" data-target="#<?php echo $Pedidos[$key]["id_pedido"] ?>" >Enviar</a>
+                                    
+                                   
+                                </td>
+
+
+
+                            </tr>
+
+
+
+
+
+                            <!-- Enviar Email -->
+                        <div class="modal fade" id="<?php echo $Pedidos[$key]["id_pedido"] ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <center>
+                                            <h3 class="modal-title" id="myModalLabel"><?php echo "Se enviara un Email para notificar al usuario." ?></h3>
+                                        </center>
+                                    </div>
+
+                                    
+
+                                    <div class="modal-footer">
+
+
+                                        <button data-toggle="tooltip" title="Volver atras" type="button" class="btn btn-danger btn-mini" data-dismiss="modal">Volver Atras</button>
+                                        <a data-toggle="tooltip" title="Cancelar Pedido" href="<?php echo "Actualizaciones.php?id=reemail&em=".$Pedidos[$key]["email"]."&p=" . $id_ped ?>" type="button" class="btn btn-success btn-mini">Enviar Correo</a>
+
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+
+
+                        
+                    <?php endforeach; ?> 
+
+                    </tbody>
+                    <tfoot>
+
+                    </tfoot>
+
+                </table>
+
+
+            </div>
+        
         <!-- Termina Menu de Opciones -->
     </div>
 
@@ -140,7 +214,7 @@ $rentas = $admin->consulta_pedidos_activos();
                             </td>
                             <td><?php $status = $rentas[$key]["id_estado_pedido"]; ?>
                                 <?php if ($status == 3) : $stt = 4; ?>
-                                    <a type="button" class="btn btn-success btn-mini" data-toggle="modal" data-target="#<?php echo $rentas[$key]["id_pedido"] ?>" >PAGAR</a>
+                                    <a type="button" class="btn btn-success btn-mini" data-toggle="modal" data-target="#<?php echo $rentas[$key]["id_pedido"]."2" ?>" >PAGAR</a>
 
                                     <?php
                                 endif;
@@ -149,7 +223,7 @@ $rentas = $admin->consulta_pedidos_activos();
                             </td>
                             <td><?php $status = $rentas[$key]["id_estado_pedido"]; ?>
                                 <?php if ($status == 3) : $stt = 5; ?>
-                                    <a data-toggle="tooltip" title="cancelar entrega" href="<?php echo "Actualizaciones.php?stt=" . $stt . "&id=ActStatus&p=" . $id_pro ?>" type="button" class="btn btn-danger btn-mini">CANCELAR</a>
+                                    <a data-toggle="modal" data-target="#<?php echo $rentas[$key]["id_pedido"]."3" ?>" title="cancelar entrega"  type="button" class="btn btn-danger btn-mini">CANCELAR</a>
                                     <?php
                                 endif;
                                 ?>
@@ -159,8 +233,30 @@ $rentas = $admin->consulta_pedidos_activos();
                         </tr>
 
 
+                        
+                             <!-- Modal CANCELAR  CUENTA -->
+                    <div class="modal fade" id="<?php echo $rentas[$key]["id_pedido"]."3" ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <center>
+                                        <h4 class="modal-title" id="myModalLabel"><?php echo "ESTA APUNTO DE CANCELAR EL PEDIDO CON ID= <strong>" . $rentas[$key]['id_pedido'] . "</strong> " ?></h3>
+                                    </center>
+                                </div>
+                                
+                                <div class="modal-footer">
+
+                                    <button data-toggle="tooltip" title="Cancelar" type="button" class="btn btn-success btn-mini" data-dismiss="modal">Cancelar</button>
+                                    <a data-toggle="tooltip" title="cancelar entrega" href="<?php echo "Actualizaciones.php?stt=" . $stt . "&id=ActStatus&p=" . $id_pro ?>" type="button" class="btn btn-danger btn-mini">CANCELAR</a>
+                                   
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
+                        
                         <!-- Modal PAGAR CUENTA -->
-                    <div class="modal fade" id="<?php echo $rentas[$key]["id_pedido"] ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="<?php echo $rentas[$key]["id_pedido"]."2" ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">

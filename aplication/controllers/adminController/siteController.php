@@ -66,6 +66,14 @@ Class siteController {
         $arreglo = $rs->GetArray();
         return $arreglo;
     }
+    function consulta_pedidos_listos() {
+        $sisinfo = new Modelo();
+        $sql = ("SELECT p.id_pedido,u.email FROM pedido p join usuario u on u.id_usuario=p.id_usuario 
+                   join detalle_pedido dp on dp.id_pedido=p.id_pedido where p.id_estado_pedido=3;" );
+        $rs = $sisinfo->consulta_sql($sql);
+        $arreglo = $rs->GetArray();
+        return $arreglo;
+    }
 
     function consulta_all_usuarios($id_admin) {
         $sisinfo = new Modelo();

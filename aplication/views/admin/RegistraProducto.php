@@ -61,10 +61,10 @@
     $obj->set_rule(array(
         'upload' => array('../img/comida', $_SESSION['nombre_img'], 'error', 'Could not upload file!<br>Check that the "tmp" folder exists inside the "examples" folder and that it is writable'),
         'image' => array('error', 'La extension debe ser jpg, png o gif image!'),
-        'filesize' => array(102400, 'error', 'Tu archivo exede los 100Kb! elige una mas pequeña :)'),
-        'required' => array('error', 'Se Requiere de una Imagen!')
+//        'filesize' => array(102400, 'error', 'Tu archivo exede los 100Kb! elige una mas pequeña :)'),
+         'required' => array('error', 'Se Requiere de una Imagen!')
     ));
-    $form->add('note', 'note_file', 'file', 'Tu imagen No debe Exceder los 100Kb.');
+    //$form->add('note', 'note_file', 'file', 'Tu imagen No debe Exceder los 100Kb.');
         
         // "submit"
         $form->add('submit', 'btnsubmit', 'Registrar');      

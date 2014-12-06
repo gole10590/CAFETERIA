@@ -9,7 +9,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/CAFETERIA/aplication/config.ini.php';
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link type="text/plain" rel="author" href="http://localhost/CAFETERIA/README.txt" />
+        <link type="text/plain" rel="author" href="http://localhost/CAFETERIA/aplication/README.md" />
 
         <!--Bootstrap--> 
         <link href="<?php echo BASEURL; ?>libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">    
@@ -43,7 +43,7 @@ if (isset($_SESSION['admin'])) {
                     <div class="navbar navbar-fixed-top navbar-inverse">
                             
                         <div class="container">
-                            <img align="left"  width="60" height="60" src="../img/logo_1.gif" alt="user"  >        
+                            <img align="left"  width="50" height="50" src="../img/logo.gif" alt="user"  >        
                         
                                
                             <a  class="navbar-brand" href="inicio.php">CAFETERIA ITC</a>  
@@ -83,7 +83,7 @@ if (isset($_SESSION['admin'])) {
                         <!-- NavBar -->
                         <div class="navbar navbar-fixed-top navbar-inverse">
                             <div class="container">
-                                <img align="left"  width="60" height="60" src="../img/logo_1.gif" alt="user"  >        
+                                <img align="left"  width="50" height="50" src="../img/logo.gif" alt="user"  >        
                         
                                 <a class="navbar-brand" href="inicio.php">
                                     CAFETERIA ITC</a>
@@ -116,7 +116,7 @@ if (isset($_SESSION['admin'])) {
                             <!-- NavBar -->
                             <div class="navbar navbar-fixed-top navbar-inverse">
                                 <div class="container">
-                                   <img align="left"  width="60" height="60" src="../img/logo_1.gif" alt="user"  >        
+                                   <img align="left"  width="50" height="50" src="../img/logo.gif" alt="user"  >        
                         
                                     <a class="navbar-brand" href="inicio.php">
                                         CAFETERIA ITC</a>
@@ -154,7 +154,7 @@ else {
                             <!-- NavBar -->
                             <div class="navbar navbar-fixed-top navbar-inverse">
                                 <div class="container">
-                                  <img align="left"  width="60" height="60" src="../img/logo_1.gif" alt="user"  >        
+                                  <img align="left"  width="50" height="50" src="../img/logo.gif" alt="user"  >        
                         
                                     <a class="navbar-brand" href="Bienvenido.php">
                                         CAFETERIA ITC</a>

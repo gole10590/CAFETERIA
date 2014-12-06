@@ -944,6 +944,10 @@
     padding: 10px;
     margin: -10px;
   }
+  .comida .close {
+    width: 560px;
+    height: 500px;
+  }
   .carousel-caption {
     position: static;
   }

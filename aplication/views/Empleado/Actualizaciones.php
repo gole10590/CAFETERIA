@@ -67,12 +67,19 @@ if ($identificador == "email") {
 if ($identificador == "reemail") {
 
 
-    $id_pedido = $_GET["id_ped"];
+    $id_pedido = $_GET["p"];
     $correo = $_GET["em"];
 
+   $lista2 = $admin->lista_productos($id_pedido);
 
+    
+    foreach ($lista2 as $elemento) {
+
+        $PRODUCTOS =$PRODUCTOS."PRODUCTO: ".$elemento['nombre'] . ",  CANTIDAD DEL PRODUCTO = " . $elemento['cantidad'] . ",  Precio/Unitario: $" . $elemento['precio'] . '</br></br></br>';
+    }
+    
     $asunto = "SU PEDIDO ESTA LISTO";
-    $mensaje = "YA SE LE HA MAS DE UNA NOTIFICACION DE QUE SU PEDIDO ESTA LISTO." . '</br></br>' . "SI NO PASA A RECOGER SU PEDIDO SU CUENTA PODRIA SER BLOQUEADA.... " . '</br></br>' . "Numero de pedido: " . $id_pedido;
+    $mensaje = "YA SE LE HA ENVIADO MAS DE UNA NOTIFICACION DE QUE SU PEDIDO YA ESTA LISTO." . '</br></br>' . "SI NO PASA A RECOGER SU PEDIDO SU CUENTA PODRIA SER BLOQUEADA.... " . '</br></br>' ."PRODUCTOS: ".'</br></br>' .$PRODUCTOS. "Numero de pedido: " . $id_pedido;
 
 
     $send_email->enviaMail($correo, $asunto, $mensaje);

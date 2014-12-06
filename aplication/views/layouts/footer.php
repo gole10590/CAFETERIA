@@ -14,9 +14,11 @@
         <div class="span4 offset5" >
             <p>
                             &copy; CAFETARIA ITC - Todos los Derechos Reservados 
+                            
 
             </p>
-        </div>                    
+        </div> 
+       
     </div>
 </footer>
 

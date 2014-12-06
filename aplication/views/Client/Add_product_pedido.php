@@ -133,7 +133,17 @@ if ($identificador == "AddProd") {
             header("Location: " . BASEURL . "views/Client/Productos.php");
             
         }else{
-           echo 'No se cargaron datos de productos'; 
+            if($identificador == "borrar")
+            {
+               $nombre = $_GET["nombre"]; 
+                unlink("./Archivos_config/" . $nombre . ".txt");
+                 header("Location: " . BASEURL . "views/Client/Productos.php");
+            }
+            else
+            {
+               echo 'No se cargaron datos de productos';   
+            }
+          
         }
             
         }
