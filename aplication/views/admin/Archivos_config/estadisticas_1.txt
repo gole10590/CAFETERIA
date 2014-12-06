@@ -1,1 +1,2 @@
- -----Modificar archivo estadisticas_1.txt                       
+A continuación podrá visualizar el total de las ventas generadas por cada producto.
+Así como la cantidad de veces que se ha vendido el producto.                       

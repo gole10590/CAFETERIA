@@ -1,2 +1,5 @@
-Este sitio le ayudara a realizar sus compras en linea.....--->modificar el archivo bienvenido.txt
-AUTORES:::::
+Este sitio le ayudara a realizar pedidos vía web.
+Para poder ingresar al sitio,  el administrador de la CAFETERIA debe de darlo de alta.
+Envié un correo a elias_gomez10@hotmail.com  anotando los siguientes datos:
+Nombre,Email,Núm. Ctrl, Teléfono.
+Usted recibirá un correo notificándole su alta en el sistema.

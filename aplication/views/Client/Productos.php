@@ -219,16 +219,16 @@ $rentas = $admin->consulta_productosClient();
                 <div class="panel-body">
                     <legend>
                         <p>
-                        <h5><center>
+                        <h4 class="modal-open"><center>
                                 <?php
-                                $file = fopen("./Archivos_config/producto.txt", "r");
+                                $file = fopen("./Archivos_config/productos.txt", "r");
                                 while (!feof($file)) {
                                     echo fgets($file) . "<br />";
                                 }
                                 fclose($file);
                                 ?>
                             </center>
-                        </h5> 
+                        </h4> 
 
                         </p>        
                     </legend>

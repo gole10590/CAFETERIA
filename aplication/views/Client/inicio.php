@@ -52,11 +52,18 @@ include ('../../controllers/siteController/Desconexion_usuario.php');
     <div class="page-header panel panel-default">
         <div class="panel-heading"><center><h2>Bienvenido <?php echo $_SESSION['nombre']?></h2></center></div>
         <div class="panel-body">
-        <p class="lead">
+        <h4 class="modal-open">
             <center>
-                AQUI VA INFROMACION PARA LOS USUARIOS<br/><br/>                
+
+                <?php
+                $file = fopen("./Archivos_config/producto.txt", "r");
+                while (!feof($file)) {
+                    echo fgets($file) . "<br />";
+                }
+                fclose($file);
+                ?> <br/><br/>                
             </center>
-        </p>
+            </h4>
         </div>
         
         <!-- Carrousel -->
@@ -68,13 +75,13 @@ include ('../../controllers/siteController/Desconexion_usuario.php');
             </ol>
             <div class="carousel-inner">
                 <div class="item active">
-                    <center><img class="imgCarrousel" src="../img/sisinfo.jpg" alt="First slide"></center>
+                    <center><img class="imgCarrousel" src="../img/comida_pagina/ASALU.jpg" alt="First slide"></center>
                 </div>                
                 <div class="item ">
-                    <center><img class="imgCarrousel" src="../img/404.png" alt="Second slide"></center>
+                    <center><img class="imgCarrousel" src="../img/comida_pagina/Sonhar.jpg" alt="Second slide"></center>
                 </div>                
                 <div class="item ">
-                    <center><img class="imgCarrousel" src="../img/logo.gif" alt="Second slide"></center>
+                    <center><img class="imgCarrousel" src="../img/comida_pagina/ensalada.jpg" alt="Second slide"></center>
                 </div>                
             </div>
             <a data-toggle="tooltip" title="Imagen Anterior" class="left carousel-control" href="#carousel-example-generic" data-slide="prev">

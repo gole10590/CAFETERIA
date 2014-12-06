@@ -24,7 +24,7 @@ include '../layouts/header.php';
     
     <!-- Menu de Opciones -->
 <div class="list-group">
-    <a href="<?php echo BASEURL."views/Empleado/pedidos.php" ?>" class="list-group-item active">Pedidos</a>
+    <a href="<?php echo BASEURL."views/Empleado/pedidos.php" ?>" class="list-group-item ">Pedidos</a>
     </div>
 <!-- Termina Menu de Opciones -->
     
@@ -56,9 +56,9 @@ include '../layouts/header.php';
         <div id="carousel-example-generic" class="carousel slide bs-docs-carousel-example">
             <ol class="carousel-indicators">
                 <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="1" class="active"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="2" class="active"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="3" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                <li data-target="#carousel-example-generic" data-slide-to="3" class=""></li>
 
             </ol>
             <div class="carousel-inner">

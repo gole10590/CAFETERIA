@@ -1,0 +1,3 @@
+En la parte inferior se le muestra un listado de los productos que puede agregar a su pedido.
+En la parte izquierda se le muestra el estatus de sus pedidos que ha generado.
+     

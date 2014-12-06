@@ -1,1 +1,1 @@
- -----Modificar archivo estadisticas.txt                       
+En el lado izquierdo de la página se muestra una lista de las diferentes estadísticas que se pueden consultar                   

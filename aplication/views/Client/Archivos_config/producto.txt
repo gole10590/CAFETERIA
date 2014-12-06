@@ -1,1 +1,1 @@
-En este modulo prodra vizualizar los productos que ofrece la cafeteria, asi como tambien podra realizar las compras de sus productos. producto.txt                       
+Este sitio le ayudara a realizar sus pedidos vía web, usted tendrá la posibilidad de realizar hasta 3 pedidos al mismo tiempo,  cuando uno de sus pedidos esté listo para ser recogido se le notificara vía email. Usted tendrá que pasar a la cafetería para pagar su (s) pedido (s)  y poder recogerlos.               

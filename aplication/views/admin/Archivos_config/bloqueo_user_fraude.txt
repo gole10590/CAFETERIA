@@ -1,1 +1,1 @@
- -----Modificar archivo bloqueo_user_fraude.txt                       
+En este apartado se listan los usuarios que han cancelado por lo menos un pedido, aquí mismo puede bloquear a los usuarios si lo requiere.                     

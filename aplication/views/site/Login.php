@@ -27,7 +27,7 @@ session_start();
 <div class="col-lg-8 col-push-2">
  
   
-    <legend><h2>Iniciar Sesion</h2></legend>
+    <legend><h2>Iniciar Sesión</h2></legend>
 
 <?php //hero-unit col-lg-4 col-offset-4    
     

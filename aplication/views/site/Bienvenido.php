@@ -32,7 +32,7 @@ include ('../layouts/header.php');
 <div class="col-lg-3 list-group-flush">
     <div class="page-header">
         <center>
-            <img class="logoSisinfo" src="../img/logo_1.gif" alt="user" class="img-thumbnail" >        
+            <img class="logoSisinfo" src="../img/ITC.jpg" alt="user" class="img-thumbnail" >        
         </center>
     </div>
 
@@ -46,6 +46,21 @@ include ('../layouts/header.php');
     </div>
     
     <!-- Termina Menu de Opciones -->
+    
+       <div class="panel-body">
+            <h5 class="modal-title" align="justify" >
+            
+
+                <?php
+                $file = fopen("./Archivos_config/bienvenido.txt", "r");
+                while (!feof($file)) {
+                    echo fgets($file) . "<br />";
+                }
+                fclose($file);
+                ?> <br/><br/>                
+            
+            </h5>
+        </div>
 
 
 </div>
@@ -55,20 +70,7 @@ include ('../layouts/header.php');
     <div class="page-header panel panel-info">
         <div class="panel-heading"><center><h2>Bienvenido al sitio web de la Cafetería III del ITC.</h2></center></div>
 
-        <div class="panel-body">
-            <h4 class="modal-open">
-            <center>
-
-                <?php
-                $file = fopen("./Archivos_config/bienvenido.txt", "r");
-                while (!feof($file)) {
-                    echo fgets($file) . "<br />";
-                }
-                fclose($file);
-                ?> <br/><br/>                
-            </center>
-            </h4>
-        </div>
+       
 
 
         <!-- Carrousel -->
@@ -82,19 +84,19 @@ include ('../layouts/header.php');
             </ol>
             <div class="carousel-inner">
                 <div class="item active">
-                    <center><img class="imgCarrousel" src="../img/comida/ASALU.jpg" alt="First slide"></center>
+                    <center><img class="imgCarrousel" src="../img/comida_pagina/ASALU.jpg" alt="First slide"></center>
                 </div>                
                 <div class="item ">
-                    <center><img class="imgCarrousel" src="../img/comida/Sonhar.jpg" alt="Second slide"></center>
+                    <center><img class="imgCarrousel" src="../img/comida_pagina/Sonhar.jpg" alt="Second slide"></center>
                 </div>                
                 <div class="item ">
-                    <center><img class="imgCarrousel" src="../img/comida/ensalada.jpg" alt="Third slide"></center>
+                    <center><img class="imgCarrousel" src="../img/comida_pagina/ensalada.jpg" alt="Third slide"></center>
                 </div> 
                 <div class="item ">
-                    <center><img class="imgCarrousel" src="../img/comida/pizza.jpg" alt="Fourth slide"></center>
+                    <center><img class="imgCarrousel" src="../img/comida_pagina/pizza.jpg" alt="Fourth slide"></center>
                 </div>
                 <div class="item ">
-                    <center><img class="imgCarrousel" src="../img/comida/sand.jpg" alt="Fifth slide"></center>
+                    <center><img class="imgCarrousel" src="../img/comida_pagina/sand.jpg" alt="Fifth slide"></center>
                 </div> 
             </div>
             <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">

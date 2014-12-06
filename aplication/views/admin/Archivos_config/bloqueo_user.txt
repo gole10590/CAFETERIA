@@ -1,1 +1,1 @@
- -----Modificar archivo bloqueo_user.txt                       
+En este apartado se listan todos los usuarios que están dados de alta, aquí mismo si lo requiere puede bloquear  usuarios para que ya puedan acceder a la pagina web.                   

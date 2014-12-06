@@ -1,1 +1,1 @@
-En este apartado podra vizualizar los productos que se ofrecen en la cafeteria, tambien podra agregar nuevos productos y cambiar el estatus de los productos existentes. -----Modificar archivo producto.txt                       
+En este apartado podra vizualizar los productos que se ofrecen en la cafeteria, tambien podra agregar nuevos productos y cambiar el estatus de los productos existentes.                     
