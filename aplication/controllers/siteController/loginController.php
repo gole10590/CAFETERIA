@@ -52,7 +52,7 @@ class LoginController extends Usuario {
         $_SESSION['id_tipo'] = $rows['id_tipo'];
         $_SESSION['foto_perfil'] = $rows['foto_perfil'];
         $_SESSION['id_estado'] = $rows['id_estado'];
-        $_SESSION["ultimoAcceso"] = time();
+        
 
         if ($rows['id_tipo'] == 1) {
             $_SESSION['admin'] = 'isAdmin';

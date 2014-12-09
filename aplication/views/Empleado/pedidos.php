@@ -247,7 +247,7 @@ $rentas = $admin->consulta_pedidos_activos();
                                 
                                 <div class="modal-footer">
 
-                                    <button data-toggle="tooltip" title="Cancelar" type="button" class="btn btn-success btn-mini" data-dismiss="modal">Cancelar</button>
+                                    <button data-toggle="tooltip" title="Cancelar" type="button" class="btn btn-success btn-mini" data-dismiss="modal">Volver atras</button>
                                     <a data-toggle="tooltip" title="cancelar entrega" href="<?php echo "Actualizaciones.php?stt=" . $stt . "&id=ActStatus&p=" . $id_pro ?>" type="button" class="btn btn-danger btn-mini">CANCELAR</a>
                                    
                                 </div>

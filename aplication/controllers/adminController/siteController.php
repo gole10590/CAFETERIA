@@ -18,9 +18,10 @@ Class siteController {
         $arreglo = $rs->GetArray();
         return $arreglo;
     }
-     function consulta_pedido($fecha) {
+
+    function consulta_pedido($fecha) {
         $sisinfo = new Modelo();
-        $sql = ("SELECT id_pedido FROM pedido where fecha='".$fecha."';");
+        $sql = ("SELECT id_pedido FROM pedido where fecha='" . $fecha . "';");
         $rs = $sisinfo->consulta_sql($sql);
         $arreglo = $rs->GetArray();
         return $arreglo;
@@ -57,19 +58,19 @@ Class siteController {
         $arreglo = $rs->GetArray();
         return $arreglo;
     }
-    
-    
+
     function consulta_pedidos_pendientes($id_usuario) {
         $sisinfo = new Modelo();
-        $sql = ("SELECT id_pedido,p.id_estado_pedido,status_pedido FROM pedido p join estado_pedido ep on ep.id_estado_pedido=p.id_estado_pedido where id_usuario='".$id_usuario."' and p.id_estado_pedido<4  ;" );
+        $sql = ("SELECT id_pedido,p.id_estado_pedido,status_pedido FROM pedido p join estado_pedido ep on ep.id_estado_pedido=p.id_estado_pedido where id_usuario='" . $id_usuario . "' and p.id_estado_pedido<4  ;" );
         $rs = $sisinfo->consulta_sql($sql);
         $arreglo = $rs->GetArray();
         return $arreglo;
     }
+
     function consulta_pedidos_listos() {
         $sisinfo = new Modelo();
         $sql = ("SELECT p.id_pedido,u.email FROM pedido p join usuario u on u.id_usuario=p.id_usuario 
-                   join detalle_pedido dp on dp.id_pedido=p.id_pedido where p.id_estado_pedido=3;" );
+                   join detalle_pedido dp on dp.id_pedido=p.id_pedido   where p.id_estado_pedido=3 group by p.id_pedido;" );
         $rs = $sisinfo->consulta_sql($sql);
         $arreglo = $rs->GetArray();
         return $arreglo;
@@ -84,10 +85,10 @@ Class siteController {
         $arreglo = $rs->GetArray();
         return $arreglo;
     }
-    
-     function cantidad_pedidos_usuario($id_usuario) {
+
+    function cantidad_pedidos_usuario($id_usuario) {
         $sisinfo = new Modelo();
-        $sql = (" select COUNT(id_pedido) from  pedido   where id_usuario=".$id_usuario." and id_estado_pedido<4");
+        $sql = (" select COUNT(id_pedido) from  pedido   where id_usuario=" . $id_usuario . " and id_estado_pedido<4");
         $rs = $sisinfo->consulta_sql($sql);
         $arreglo = $rs->GetArray();
         return $arreglo;
@@ -112,15 +113,15 @@ WHERE ep.id_estado_pedido =5) as cancel group by id_usuario;" );
         $arreglo = $rs->GetArray();
         return $arreglo;
     }
-    
+
     function status_pedido($id_pedido) {
         $sisinfo = new Modelo();
-        $sql = ("SELECT id_estado_pedido FROM pedido where id_pedido=".$id_pedido." ;" );
+        $sql = ("SELECT id_estado_pedido FROM pedido where id_pedido=" . $id_pedido . " ;" );
         $rs = $sisinfo->consulta_sql($sql);
         $arreglo = $rs->GetArray();
         return $arreglo;
     }
-    
+
     function total_pedido($id_pedido) {
         $sisinfo = new Modelo();
         $sql = (" SELECT  SUM( (precio * cantidad) - DESCUENTO ) AS total
@@ -129,15 +130,12 @@ WHERE ep.id_estado_pedido =5) as cancel group by id_usuario;" );
                   detalle_pedido dv 
                           join producto p on p.id_producto=dv.id_producto
             
-                           where id_pedido=".$id_pedido.";" );
+                           where id_pedido=" . $id_pedido . ";" );
         $rs = $sisinfo->consulta_sql($sql);
         $arreglo = $rs->GetArray();
         return $arreglo;
     }
 
-    
-   
-    
     function consulta_prod_mas_vendidos() {
         $sisinfo = new Modelo();
         $sql = ("SELECT id_pedido,id_estado_pedido,id_producto,nombre,
@@ -266,16 +264,16 @@ from
                 . $estado . "' WHERE  `usuario`.`id_usuario` =" . $id_usuario . ";");
         $sisinfo->consulta_sql($sql);
     }
-    
-    function inserta_pedido($fecha,$id_usuario,$comentario) {
+
+    function inserta_pedido($fecha, $id_usuario, $comentario) {
         $sisinfo = new Modelo();
-        $sql = ("insert into pedido (fecha,id_usuario,comentario,id_estado_pedido) values ('".$fecha."','".$id_usuario."','".$comentario."',1);");
+        $sql = ("insert into pedido (fecha,id_usuario,comentario,id_estado_pedido) values ('" . $fecha . "','" . $id_usuario . "','" . $comentario . "',1);");
         $sisinfo->consulta_sql($sql);
     }
-    
-    function inserta_detalle_pedido($id_pedido,$id_producto,$cantidad,$descuento) {
+
+    function inserta_detalle_pedido($id_pedido, $id_producto, $cantidad, $descuento) {
         $sisinfo = new Modelo();
-        $sql = ("insert into detalle_pedido (id_pedido,id_producto,cantidad,descuento) values (".$id_pedido.",".$id_producto.",".$cantidad.",".$descuento.");");
+        $sql = ("insert into detalle_pedido (id_pedido,id_producto,cantidad,descuento) values (" . $id_pedido . "," . $id_producto . "," . $cantidad . "," . $descuento . ");");
         $sisinfo->consulta_sql($sql);
     }
 
